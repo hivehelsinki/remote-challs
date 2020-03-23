@@ -30,6 +30,8 @@ int hv_necklace(char *s1, char *s2)
 	char *tmp;
 	char *tmp2;
 
+	if (!s1[0] && !s2[0])
+		return (1);
 	len = strlen(s1);
 	i = 0;
 	tmp = rotone(s1);
@@ -38,12 +40,12 @@ int hv_necklace(char *s1, char *s2)
 		if (strcmp(tmp, s2) == 0)
 		{
 			free(tmp);
-			return (0);
+			return (1);
 		}
 		tmp2 = tmp;
 		tmp = rotone(tmp);
 		free(tmp2);
 		i++;
 	}
-	return (1);
+	return (0);
 }

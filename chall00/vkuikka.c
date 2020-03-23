@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <string.h>
+
 int		ft_strequ(char *st1, char *st2)
 {
 	while (*st1 && *st2 && *st1 == *st2)
@@ -12,8 +15,8 @@ int		ft_strequ(char *st1, char *st2)
 
 void	ft_rotate(char *str)
 {
-	int		i;
-	char	tmp;
+	size_t		i;
+	char		tmp;
 
 	i = 0;
 	tmp = str[0];
@@ -27,16 +30,26 @@ void	ft_rotate(char *str)
 
 int		hv_necklace(char *s1, char *s2)
 {
-	int		i = 0;
-	int		len = 0;
+	size_t		i;
+	size_t		len;
+	char 		*str1;
+	char		*str2;
 
-	if (!s1 || !s2)
+	i = 0;
+	if (!s1 || !s2 || strlen(s1) != strlen(s2))
 		return (0);
-	while (s1[len])
-		len++;
-	while (i++ < len && !ft_strequ(s1, s2))
-		ft_rotate(s2);
-	if (ft_strequ(s1, s2))
+	len = strlen(s1);
+	if (!(str1 = (char*)malloc(sizeof(char) * len)))
+		return (0);
+	if (!(str2 = (char*)malloc(sizeof(char) * len)))
+		return (0);
+	strcpy(str1, s1);
+	strcpy(str2, s2);
+	while (i++ < len && !ft_strequ(str1, str2))
+		ft_rotate(str2);
+	if (ft_strequ(str1, str2))
 		return (1);
+	free(str1);
+	free(str2);
 	return (0);
 }

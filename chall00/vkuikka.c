@@ -1,5 +1,3 @@
-#include <unistd.h>
-
 int		ft_strequ(char *st1, char *st2)
 {
 	while (*st1 && *st2 && *st1 == *st2)

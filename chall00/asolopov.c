@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 int	get_len(char *str)
 {
 	int cnt;
@@ -35,29 +33,32 @@ int hv_necklace(char *s1, char *s2)
 	int d;
 	char *temp;
 
+	if (!s1 || !s2)
+		return (0);
 	len = get_len(s1);
 	d = 0;
-	temp = malloc(sizeof(char) * len + 1);
-	while (d < len)
+	while (d < len) // d as counter to loop thorugh the string
 	{
 		y = 0;
 		z = 0;
 		x = d;
-		while (x < len)
+		temp = malloc(sizeof(char) * len + 1); // creating a temp to compare s2 to it later
+		while (x < len) // adding main part to temp
 		{
 			temp[z] = s1[x];
 			x += 1;
 			z += 1;
 		}
-		while (y < d)
+		while (y < d) // adding front part to the back of the temp
 		{
 			temp[z] = s1[y];
 			y += 1;
 			z += 1;
 		}
 		temp[z] = '\0';
-		if (ft_strequ(temp, s2))
+		if (ft_strequ(temp, s2)) // comparing
 			return (1);
+		free(temp);
 		d += 1;
 	}
 	return (0);

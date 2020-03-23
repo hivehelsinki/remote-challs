@@ -35,8 +35,8 @@ int hv_necklace(char *s1, char *s2)
 	int d;
 	char *temp;
 
-	if (!s1 || !s2)
-		return (0);
+	if (get_len(s1) == 0 && get_len(s2) == 0)
+		return 1;
 	len = get_len(s1);
 	d = 0;
 	while (d < len) // d as counter to loop thorugh the string

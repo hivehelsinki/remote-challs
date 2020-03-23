@@ -22,7 +22,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (*(unsigned char*)s1 - *(unsigned char *)s2);
 }
 
-int hv_necklase(char *s1, char *s2)
+int  hv_necklace(char *s1, char *s2)
 {
     int len;
     int lentwo;

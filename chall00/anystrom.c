@@ -6,7 +6,7 @@
 /*   By: JessicaNystrom <JessicaNystrom@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 14:33:50 by JessicaNyst       #+#    #+#             */
-/*   Updated: 2020/03/23 16:13:28 by JessicaNyst      ###   ########.fr       */
+/*   Updated: 2020/03/23 16:29:18 by JessicaNyst      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		ft_strcmp(const char *s1, const char *s2, int st)
 
 	i = 0;
 	len = ft_strlen(s1) - 1;
-	while (s1[i + st] != '\0' && s2[i] != '\0' && s1[i + st] == s2[i] && i < len)
+	while (s1[i + st] != '\0' && s2[i] != '\0' && s1[i + st] == s2[i]
+			&& i < len)
 	{
 		i++;
 		if (s1[i + st] == '\0' && s2[i] != '\0')

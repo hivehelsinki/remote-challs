@@ -44,7 +44,7 @@ int     hv_necklace(char *s1, char *s2)
     
     i = 0;
     r = ft_strlen(s1);
-    if (!s1 && !s2 || s1 == s2)
+    if (!s1 && !s2 || ft_strcmp(s1, s2) == 0)
       return (1);
     else if (!s1 || !s2 || (r != ft_strlen(s2)))
       return (0);

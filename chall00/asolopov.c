@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 int	get_len(char *str)
 {
 	int cnt;
@@ -8,7 +10,7 @@ int	get_len(char *str)
 	return (cnt);
 }
 
-int	ft_strequ(char const *s1, char const *s2)
+int	ft_strequ(char *s1, char *s2)
 {
 	if (!s1 || !s2)
 		return (0);
@@ -42,7 +44,8 @@ int hv_necklace(char *s1, char *s2)
 		y = 0;
 		z = 0;
 		x = d;
-		temp = malloc(sizeof(char) * len + 1); // creating a temp to compare s2 to it later
+		if (!(temp = (char *)malloc(sizeof(char) * len + 1)))
+			return (0); // creating a temp to compare s2 to it later
 		while (x < len) // adding main part to temp
 		{
 			temp[z] = s1[x];

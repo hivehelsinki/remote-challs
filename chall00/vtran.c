@@ -32,7 +32,7 @@ int hv_necklase(char *s1, char *s2)
         return (0);
     len = ft_strlen(s1);
     lentwo = ft_strlen(s2);
-    if (ft_strlen(s2) != len)
+    if (lentwo != len)
         return (0);
     if (len == 0 && lentwo == 0)
         return (1);

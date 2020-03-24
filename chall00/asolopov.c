@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stdio.h>
 
 int	get_len(char *str)
 {
@@ -10,7 +10,7 @@ int	get_len(char *str)
 	return (cnt);
 }
 
-int	ft_strequ(char *s1, char *s2)
+int	ft_strequ(char const *s1, char const *s2)
 {
 	if (!s1 || !s2)
 		return (0);
@@ -35,33 +35,29 @@ int hv_necklace(char *s1, char *s2)
 	int d;
 	char *temp;
 
-	if (get_len(s1) == 0 && get_len(s2) == 0)
-		return 1;
 	len = get_len(s1);
 	d = 0;
-	while (d < len) // d as counter to loop thorugh the string
+	temp = malloc(sizeof(char) * len + 1);
+	while (d < len)
 	{
 		y = 0;
 		z = 0;
 		x = d;
-		if (!(temp = (char *)malloc(sizeof(char) * len + 1)))
-			return (0); // creating a temp to compare s2 to it later
-		while (x < len) // adding main part to temp
+		while (x < len)
 		{
 			temp[z] = s1[x];
 			x += 1;
 			z += 1;
 		}
-		while (y < d) // adding front part to the back of the temp
+		while (y < d)
 		{
 			temp[z] = s1[y];
 			y += 1;
 			z += 1;
 		}
 		temp[z] = '\0';
-		if (ft_strequ(temp, s2)) // comparing
+		if (ft_strequ(temp, s2))
 			return (1);
-		free(temp);
 		d += 1;
 	}
 	return (0);

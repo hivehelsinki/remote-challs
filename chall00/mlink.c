@@ -1,6 +1,6 @@
-int ft_strlen(char *s)
+size_t ft_strlen(char *s)
 {
-    int	i;
+    size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -11,16 +11,18 @@ int ft_strlen(char *s)
 int hv_necklace(char *s1, char *s2)
 {
     int len;
+    int len2;
     int i;
     int j;
     int x;
 
     x = -1;
-    if (!s1 || !s2 || (ft_strlen(s1) != ft_strlen(s2)))
-        return (0);
-    if (ft_strlen(s1) == 0 && ft_strlen(s2) == 0)
-        return (1);
     len = ft_strlen(s1);
+    len2 = ft_strlen(s2);
+    if (!s1 || !s2 || (len != len2))
+        return (0);
+    if (len == 0 && len2 == 0)
+        return (1);
     while (len > ++x)
     {
         j = 0;

@@ -40,12 +40,13 @@ result = ""
 input = sys.argv[1]
 if not input:
 	error()
-for c in input:
-	c = c.upper()
-	if not 65 <= ord(c) <= 90 and c != " ":
+for char in input:
+	char = char.upper()
+	asciiValue = ord(char)
+	if not 65 <= asciiValue <= 90 and char != " ":
 		error()
-	if c == " ":
+	if char == " ":
 		result += " "
 	else:
-		result += format[ord(c) - 65]
+		result += format[asciiValue - 65]
 print (result)

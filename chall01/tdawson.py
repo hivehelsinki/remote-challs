@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 
-if len(sys.argv) != 2 or not isinstance(sys.argv[1], str) or len(sys.argv[1]) == 0:
+if len(sys.argv) != 2 or len(sys.argv[1]) == 0:
     sys.exit(f'usage: {sys.argv[0]} <a-zA-Z string>')
 
 morse_alphabet = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',

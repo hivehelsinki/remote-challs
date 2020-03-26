@@ -30,16 +30,18 @@ morse_code = {
     'Y':'-.--',
     'Z':'--..',
 }
+
+
+if len(sys.argv) != 2:
+    print ('usage: ./ismelich.py <a-zA-Z string>')
+    sys.exit(1)
+
 str = sys.argv[1]
 for x in str:
     av = ord(x)
     if av < 32 or 32 < av < 65 or 90 < av < 97 or av > 122:
         print('usage: ./ismelich.py <a-zA-Z string>')
-        exit(1)
-
-if len(sys.argv) != 2:
-    print ('usage: ./ismelich.py <a-zA-Z string>')
-    sys.exit(1)
+        sys.exit(1)
 
 def encryptor(text):
     encrypted_text = ""

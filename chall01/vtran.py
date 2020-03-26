@@ -38,13 +38,16 @@ def tinnitus(str):
             ret += tittut[i]
         except KeyError:
             print ('usage: ./vtran.py <a-zA-Z string>')
-            exit(1)
+            sys.exit(1)
     print (ret)
+
+def usage():
+    print ('usage: ./vtran.py <a-zA-Z string>')
+    sys.exit(1)
 
 def main():
     if len (sys.argv) == 2:
         tinnitus(sys.argv[1].lower())
     else:
-        print ('usage: ./vtran.py <a-zA-Z string>')
-        exit(1)
+        usage()
 main()

@@ -3,7 +3,8 @@ import sys
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-if len(sys.argv) < 2:
+if len(sys.argv) != 2:
+	print ("usage: ./vkuikka.py <a-zA-Z string")
 	quit()
 for arg_ch in sys.argv[1]:
 	aplha_i = alphabet.find(arg_ch.lower())

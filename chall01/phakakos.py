@@ -1,8 +1,12 @@
 import sys
 import string
+import re
+
+pattern = re.compile("^[a-zA-Z ]+$")
 
 def pUsage():
         print("usage: ./phakakos.py <a-zA-Z string>")
+        exit(1)
 
 def morse_letter(num):
 	num+=1
@@ -37,24 +41,17 @@ def morse_letter(num):
 	return code.get(num, "invalid")
 
 def morse_word(word):
+        if (pattern.match(word) == None):
+                pUsage()
         morseWord =""
         for c in word:
                 if (c.isalpha()) == True:
-                        morseRet =morse_letter(string.ascii_lowercase.index(c.lower()))
-                        if (morseRet == "invalid"):
-                                pUsage()
-                                return
-                        morseWord+=morseRet
+                        morseWord+=morse_letter(string.ascii_lowercase.index(c.lower()))
                 elif (c == ' '):
                         morseWord+=' '
                 else:
                         pUsage()
-                        return
-        if (morseWord == ""):
-                pUsage()
-                return
-        else:
-                print(morseWord)
+        print(morseWord)
 
 if len(sys.argv) == 2:
 	morse_word(sys.argv[1])

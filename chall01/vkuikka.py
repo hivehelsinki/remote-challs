@@ -1,63 +1,71 @@
 #!/usr/bin/python3
 import sys
 
-alphabet = "abcdefghijklmnopqrstuvwxyz"
+def my_errorMessage():
+	print ("usage:", sys.argv[0], "<a-zA-Z string>")
+	quit()
+
+alphabet = "abcdefghijklmnopqrstuvwxyz "
+morse = ""
 
 if len(sys.argv) != 2:
-	print ("usage: ./vkuikka.py <a-zA-Z string")
-	quit()
+	my_errorMessage()
 for arg_ch in sys.argv[1]:
-	aplha_i = alphabet.find(arg_ch.lower())
-	if aplha_i == 0:
-		print (".-", end = "")
-	if aplha_i == 1:
-		print ("-...", end = "")
-	if aplha_i == 2:
-		print ("-.-.", end = "")
-	if aplha_i == 3:
-		print ("-..", end = "")
-	if aplha_i == 4:
-		print (".", end = "")
-	if aplha_i == 5:
-		print ("..-.", end = "")
-	if aplha_i == 6:
-		print ("--.", end = "")
-	if aplha_i == 7:
-		print ("....", end = "")
-	if aplha_i == 8:
-		print ("..", end = "")
-	if aplha_i == 9:
-		print (".---", end = "")
-	if aplha_i == 10:
-		print ("-.-", end = "")
-	if aplha_i == 11:
-		print (".-..", end = "")
-	if aplha_i == 12:
-		print ("--", end = "")
-	if aplha_i == 13:
-		print ("-.", end = "")
-	if aplha_i == 14:
-		print ("---", end = "")
-	if aplha_i == 15:
-		print (".--.", end = "")
-	if aplha_i == 16:
-		print ("--.-", end = "")
-	if aplha_i == 17:
-		print (".-.", end = "")
-	if aplha_i == 18:
-		print ("...", end = "")
-	if aplha_i == 19:
-		print ("-", end = "")
-	if aplha_i == 20:
-		print ("..-", end = "")
-	if aplha_i == 21:
-		print ("...-", end = "")
-	if aplha_i == 22:
-		print (".--", end = "")
-	if aplha_i == 23:
-		print ("-..-", end = "")
-	if aplha_i == 24:
-		print ("-.--", end = "")
-	if aplha_i == 25:
-		print ("--..", end = "")
-print ("")
+	alpha_i = alphabet.find(arg_ch.lower())
+	if alpha_i == 0:
+		morse += ".-"
+	elif alpha_i == 1:
+		morse += "-..."
+	elif alpha_i == 2:
+		morse += "-.-."
+	elif alpha_i == 3:
+		morse += "-.."
+	elif alpha_i == 4:
+		morse += "."
+	elif alpha_i == 5:
+		morse += "..-."
+	elif alpha_i == 6:
+		morse += "--."
+	elif alpha_i == 7:
+		morse += "...."
+	elif alpha_i == 8:
+		morse += ".."
+	elif alpha_i == 9:
+		morse += ".---"
+	elif alpha_i == 10:
+		morse += "-.-"
+	elif alpha_i == 11:
+		morse += ".-.."
+	elif alpha_i == 12:
+		motse += "--"
+	elif alpha_i == 13:
+		morse += "-."
+	elif alpha_i == 14:
+		morse += "---"
+	elif alpha_i == 15:
+		morse += ".--."
+	elif alpha_i == 16:
+		morse += "--.-"
+	elif alpha_i == 17:
+		morse += ".-."
+	elif alpha_i == 18:
+		morse += "..."
+	elif alpha_i == 19:
+		morse += "-"
+	elif alpha_i == 20:
+		morse += "..-"
+	elif alpha_i == 21:
+		morse += "...-"
+	elif alpha_i == 22:
+		morse += ".--"
+	elif alpha_i == 23:
+		morse += "-..-"
+	elif alpha_i == 24:
+		morse += "-.--"
+	elif alpha_i == 25:
+		morse += "--.."
+	elif alpha_i == 26:
+		morse += " "
+	else:
+		my_errorMessage()
+print (morse)

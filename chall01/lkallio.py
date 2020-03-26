@@ -18,9 +18,6 @@ def		search_morse_tree(inp, i, j):
 		if (j < len(inp) - 1):
 			if (not search_morse_tree(inp, 0, j + 1)):
 				print_usage()
-	elif (i and (inp[j] == ' ')):
-		if (not search_morse_tree(inp, 0, j + 1)):
-				print_usage()
 	elif (not search_morse_tree(inp, i * 2 + 1, j)
 	and not search_morse_tree(inp, i * 2 + 2, j)):
 		return (0)

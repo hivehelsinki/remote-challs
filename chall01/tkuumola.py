@@ -34,7 +34,7 @@ morse_code = {
 
 if len(sys.argv) != 2:
     print ('usage: ./tkuumola.py <a-zA-Z string>')
-    exit(1)
+    sys.exit(1)
 
 input = sys.argv[1].upper()
 input = " ".join(input.split())

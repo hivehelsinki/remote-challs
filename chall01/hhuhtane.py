@@ -6,7 +6,7 @@
 #    By: hhuhtane <hhuhtane@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/26 15:47:35 by hhuhtane          #+#    #+#              #
-#    Updated: 2020/03/26 16:51:09 by hhuhtane         ###   ########.fr        #
+#    Updated: 2020/03/26 18:13:46 by hhuhtane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ import sys
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+test = "123moi"
 arg_i = 0
 i = 0
 morse = ""
@@ -21,7 +22,9 @@ codes = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---',
          '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-',
          '..-', '...-', '.--', '-..-', '-.--', '--..']
 
-if len(sys.argv) == 2:
+if ( (len(sys.argv) != 2) or ( sys.argv[1].isalpha() == False)):
+        print("usage: ./hhuhtane.py <a-zA-Z string>")
+else:
     while arg_i < len(sys.argv[1]):
         i = 0
         while i < 26:
@@ -32,6 +35,4 @@ if len(sys.argv) == 2:
             i += 1
         arg_i += 1
     print(f"{morse}")
-else:
-    print("usage: ./hhuhtane.py <a-zA-Z string>")
 

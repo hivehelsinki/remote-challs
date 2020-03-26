@@ -105,4 +105,3 @@ usage: ./xlogin.py <a-zA-Z string>
  
 <br /><br />
 Good luck!
-

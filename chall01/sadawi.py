@@ -37,10 +37,9 @@ if len(sys.argv) != 2:
 	error()
 
 result = ""
-input = sys.argv[1]
-if not input:
+if not sys.argv[1]:
 	error()
-for char in input:
+for char in sys.argv[1]:
 	char = char.upper()
 	asciiValue = ord(char)
 	if not 65 <= asciiValue <= 90 and char != " ":

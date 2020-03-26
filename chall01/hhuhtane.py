@@ -6,7 +6,7 @@
 #    By: hhuhtane <hhuhtane@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/26 15:47:35 by hhuhtane          #+#    #+#              #
-#    Updated: 2020/03/26 18:13:46 by hhuhtane         ###   ########.fr        #
+#    Updated: 2020/03/26 18:22:41 by hhuhtane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ import sys
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-test = "123moi"
 arg_i = 0
 i = 0
 morse = ""

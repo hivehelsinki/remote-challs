@@ -1,6 +1,8 @@
 import sys
 import string
 
+def pUsage():
+        print("usage: ./phakakos.py <a-zA-Z string>")
 
 def morse_letter(num):
 	num+=1
@@ -42,11 +44,15 @@ def morse_word(word):
                 elif (c == ' '):
                         morseWord+=' '
                 else:
-                        print("usage: ./phakakos.py <a-zA-Z string>")
+                        pUsage()
                         return
-        print(morseWord)
+        if (morseWord == ""):
+                pUsage()
+                return
+        else:
+                print(morseWord)
 
 if len(sys.argv) == 2:
 	morse_word(sys.argv[1])
 else:
-	print("usage: ./phakakos.py <a-zA-Z string>")
+	pUsage()

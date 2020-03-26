@@ -70,7 +70,7 @@ def morseEncode(string):
 
 # Prints Usage 
 def printUsage():
-    print("usage: ./xlogin.py <a-zA-Z string>")
+    print("usage: ./mdesta.py <a-zA-Z string>")
 
 # Is Alpha or Space and Not other accented letter
 # Combining isalpha() and isspace() 'not in' operator

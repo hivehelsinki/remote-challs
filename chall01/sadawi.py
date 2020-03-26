@@ -30,7 +30,7 @@ format = """.-
 --..""".split()
 
 def error():
-	print("usage: ./xlogin.py <a-zA-Z string>")
+	print("usage: ./sadawi.py <a-zA-Z string>")
 	sys.exit()
 
 if len(sys.argv) != 2:

@@ -29,7 +29,6 @@ c = """.-
 -.-- 
 --.."""
 
-print(sys.argv[1])
 def error():
     print("usage: ./alcohen.py <a-zA-Z string>")
     exit()
@@ -37,12 +36,13 @@ def error():
 if (len(sys.argv) != 2):
     error()
 
-string_alpha_or_spaces = all(x.isalpha() or x.isspace() for x in sys.argv[1])
-if (not string_alpha_or_spaces or not sys.argv[1]):
+alphabet = string.ascii_lowercase
+string_a_to_z_or_spaces = all(x.lower() in alphabet or x.isspace() for x in sys.argv[1])
+if (not string_a_to_z_or_spaces or not sys.argv[1]):
     error()
 
 codes = c.split()
-alph = list(string.ascii_lowercase)
+alph = list(alphabet)
 d = dict(zip(alph, codes))
 
 for x in str(sys.argv[1]).lower():

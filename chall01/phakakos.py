@@ -40,7 +40,11 @@ def morse_word(word):
         morseWord =""
         for c in word:
                 if (c.isalpha()) == True:
-                        morseWord+=morse_letter(string.ascii_lowercase.index(c.lower()))
+                        morseRet =morse_letter(string.ascii_lowercase.index(c.lower()))
+                        if (morseRet == "invalid"):
+                                pUsage()
+                                return
+                        morseWord+=morseRet
                 elif (c == ' '):
                         morseWord+=' '
                 else:

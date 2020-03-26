@@ -11,9 +11,9 @@ def		print_usage():
 
 # We search the string "alpha_tree" such that every recursive step
 # "left" (i is uneven) signifies a dot, whereas a step "right"
-# signifies a line. When we hit the character, we either step to the next 
-# character or we return 1 and begin appending dots or lines every step of the way
-# back from the recursion, creating a reversed string of morse code.
+# signifies a line. When we hit the character, we either move on to the next 
+# character of the converted string or we return 1 and begin appending dots or
+# lines every step of the way back from the recursion, creating a reversed string of morse code.
 # The source for this idea is this image:
 # https://qph.fs.quoracdn.net/main-qimg-fd6688d09555dd7cf9221e7396377c5b
 

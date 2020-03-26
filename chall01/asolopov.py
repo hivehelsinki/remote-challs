@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/26 19:14:47 by asolopov          #+#    #+#              #
-#    Updated: 2020/03/26 20:18:52 by asolopov         ###   ########.fr        #
+#    Updated: 2020/03/26 20:26:04 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ def check_chars(word, morse_dict):
 			if x not in morse_dict:
 				usage()
 
-if (len(sys.argv)) != 2:
+if (len(sys.argv)) != 2 or not sys.argv[1]:
 	usage()
 else:
 	word = sys.argv[1].lower()
@@ -67,4 +67,3 @@ else:
 		else:
 			usage()
 print()
-			

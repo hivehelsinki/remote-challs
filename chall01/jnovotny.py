@@ -38,7 +38,7 @@ def morse(string):
 	return str_out
 
 if __name__ == "__main__":
-	if len(sys.argv) == 2:
+	if len(sys.argv) == 2 and len(sys.argv[1]) > 0:
 		for word in  sys.argv[1].split():
 			if not word.isalpha():
 				print("usage: ./jnovotny.py <a-zA-Z string>")

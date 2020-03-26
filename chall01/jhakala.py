@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 
 MORSE = { 'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 
@@ -34,4 +35,4 @@ def main():
     tomorse(sys.argv[1])
 
 if __name__ == '__main__': 
-    main() 
+    main()

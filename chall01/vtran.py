@@ -39,7 +39,8 @@ def tinnitus(str):
         except KeyError:
             print ('usage: ./vtran.py <a-zA-Z string>')
             sys.exit(1)
-    print (ret)
+    if len(str) > 0:
+        print (ret)
 
 def usage():
     print ('usage: ./vtran.py <a-zA-Z string>')

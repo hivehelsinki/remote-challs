@@ -60,3 +60,5 @@ if len(sys.argv) == 2:
 	morse_word(sys.argv[1])
 else:
 	pUsage()
+
+exit()

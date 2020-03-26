@@ -26,7 +26,6 @@ if len(sys.argv) != 2 :
     print('usage: ./xlogin.py <a-zA-Z string>')
     quit()
 message = sys.argv[1]
-print (message)
 for letter in message :
     if (letter >= 'A' and letter <= 'Z') or (letter >= 'a' and letter <= 'z'):
         result += MORSE_DICTIONARY[letter]

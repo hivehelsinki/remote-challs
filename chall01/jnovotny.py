@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 import sys
 
+def usage_exit():
+	print("usage: ./jnovotny.py <a-zA-Z string>")
+	exit()
+
 def morse(string):
 	morse_dict = {
 		"a":".-",
@@ -33,16 +37,16 @@ def morse(string):
 	for letter in string:
 		if letter == " ":
 			str_out += " "
-		else:
+		elif letter in morse_dict.keys():
 			str_out += f"{morse_dict[letter]}"
+		else:
+			usage_exit()
 	return str_out
 
+
+
 if __name__ == "__main__":
-	if len(sys.argv) == 2 and len(sys.argv[1]) > 0:
-		for word in  sys.argv[1].split():
-			if not word.isalpha():
-				print("usage: ./jnovotny.py <a-zA-Z string>")
-				exit()
+	if len(sys.argv) == 2 and len(sys.argv[1]) > 0:	
 		print(morse(sys.argv[1].lower()))
 	else:
-		print("usage: ./jnovotny.py <a-zA-Z string>")
+		usage_exit()

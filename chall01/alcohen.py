@@ -1,4 +1,4 @@
-mport string
+import string
 import sys
 
 c = """.-

@@ -46,4 +46,3 @@ if all(x.isalpha() or x.isspace() for x in input) and len(input) != 0:
     print()
 else:
     print ('usage: ./tkuumola.py <a-zA-Z string>')
-    exit(1)

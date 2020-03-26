@@ -6,7 +6,7 @@ if len(sys.argv) != 2 or not sys.argv[1]:
 	print("usage: " + sys.argv[0] + " <a-zA-Z string>")
 	exit(0)
 for i in sys.argv[1]:
-	if not i.isalnum() and i != ' ':
+	if not (i.isalpha() and ord(i) < 128) and i != ' ':
 		print("usage: " + sys.argv[0] + " <a-zA-Z string>")
 		exit(0)
 sys.argv[1] = sys.argv[1].lower()

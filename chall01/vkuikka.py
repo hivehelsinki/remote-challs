@@ -32,7 +32,7 @@ for arg_ch in sys.argv[1]:
 	if aplha_i == 11:
 		print (".-..", end = "")
 	if aplha_i == 12:
-		print ("-- ", end = "")
+		print ("--", end = "")
 	if aplha_i == 13:
 		print ("-.", end = "")
 	if aplha_i == 14:

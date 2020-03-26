@@ -29,7 +29,7 @@ def main():
     if len(sys.argv) != 2 or len(sys.argv[1]) == 0:
         print("usage: ./jhakala.py <a-zA-Z string>")
         return
-    tomorse(argv[1])
+    tomorse(sys.argv[1])
 
 if __name__ == '__main__': 
     main() 

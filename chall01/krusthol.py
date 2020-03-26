@@ -12,7 +12,7 @@ def bad_character(str):
 if len(sys.argv) != 2:
     sys.exit("usage: ./krusthol.py <a-zA-Z string>")
 arg = sys.argv[1].lower()
-if bad_character(arg):
+if len(arg) == 0 or bad_character(arg):
     sys.exit("usage: ./krusthol.py <a-zA-Z string>")
 for c in arg:
     if c == 'a':

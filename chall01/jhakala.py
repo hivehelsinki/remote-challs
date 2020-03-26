@@ -15,7 +15,9 @@ def tomorse(message):
     for letter in message: 
         if letter == ' ':
             output += " "
-        elif letter.isalpha():
+        elif letter >= 'a' and letter <= 'z':
+            output += MORSE[letter]
+        elif letter >= 'A' and letter <= 'Z':
             output += MORSE[letter]
         else:
             print("usage: ./jhakala.py <a-zA-Z string>")

@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/26 19:14:47 by asolopov          #+#    #+#              #
-#    Updated: 2020/03/26 20:01:08 by asolopov         ###   ########.fr        #
+#    Updated: 2020/03/26 20:18:52 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,20 +42,23 @@ morse_dict = {
 }
 
 def usage():
-	print("usage: ./xlogin.py <a-zA-Z string>")
+	print(f"usage: {sys.argv[0]} <a-zA-Z string>")
 	exit()	
 
-def check_chars(word):
+def check_chars(word, morse_dict):
 	for x in word:
 		if x.isalpha() == False:
 			if x.isspace() == False:
+				usage()
+		else:
+			if x not in morse_dict:
 				usage()
 
 if (len(sys.argv)) != 2:
 	usage()
 else:
 	word = sys.argv[1].lower()
-	check_chars(word)
+	check_chars(word, morse_dict)
 	for x in word:
 		if (x.isalpha()):
 			print(morse_dict[x], end='')

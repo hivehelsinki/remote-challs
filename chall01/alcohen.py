@@ -2,52 +2,28 @@
 import string
 import sys
 
-c = """.-
--... 
--.-. 
--.. 
-. 
-..-. 
---. 
-.... 
-.. 
-.--- 
--.- 
-.-.. 
--- 
--. 
---- 
-.--. 
---.- 
-.-. 
-... 
-- 
-..- 
-...- 
-.-- 
--..- 
--.-- 
---.."""
-
 def error():
     print("usage: ./alcohen.py <a-zA-Z string>")
     exit()
 
-if (len(sys.argv) != 2):
+# Morse codes in order from A to Z
+morse_codes = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..']
+
+if (len(sys.argv) != 2): # Only accept one argument
     error()
 
-alphabet = string.ascii_lowercase
-string_a_to_z_or_spaces = all(x.lower() in alphabet or x.isspace() for x in sys.argv[1])
-if (not string_a_to_z_or_spaces or not sys.argv[1]):
+alphabet = list(string.ascii_lowercase)
+string_to_convert = sys.argv[1].lower()
+
+# Check that string to convert isn't empty and only contains letters [a-zA-Z] and spaces
+string_a_to_z_or_spaces = all(x.lower() in alphabet or x.isspace() for x in string_to_convert) 
+if (not string_a_to_z_or_spaces or not string_to_convert):
     error()
 
-codes = c.split()
-alph = list(alphabet)
-d = dict(zip(alph, codes))
+# Combine letters and morse codes to a dictionary. A letter can be looked up to receive the corresponding morse code.
+alphabet_morse_dict = dict(zip(alphabet, morse_codes))
+alphabet_morse_dict[' '] = ' '
 
-for x in str(sys.argv[1]).lower():
-    if (x == " "):
-        print(" ", end="")
-    else:
-        print(d[x], end="")
+for letter in string_to_convert:
+        print(alphabet_morse_dict[letter], end='')
 print()

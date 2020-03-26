@@ -2,7 +2,7 @@
 import sys
 
 def error():
-    print('usage: ./xlogin.py <a-zA-Z string>')
+    print(f'usage: {sys.argv[0]} <a-zA-Z string>')
     sys.exit()
 
 if len(sys.argv) != 2 or not isinstance(sys.argv[1], str) or len(sys.argv[1]) == 0:

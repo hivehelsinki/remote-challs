@@ -36,11 +36,11 @@ if len(sys.argv) != 2:
     print ('usage: ./tkuumola.py <a-zA-Z string>')
     sys.exit(1)
 
-input = sys.argv[1].upper()
-len = len(" ".join(input.split()))
+string = sys.argv[1].upper()
+str_len = len(" ".join(string.split()))
 
-if all(x in morse_code for x in input) and len != 0:
-    for elem in input:
+if all(x in morse_code for x in string) and str_len != 0:
+    for elem in string:
             print(morse_code[elem], end = '')
     print()
 else:

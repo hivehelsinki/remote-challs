@@ -6,7 +6,7 @@ output = []
 alpha_tree = "/etianmsurwdkgohvfulapjbxcyzq"
 
 def		print_usage():
-	print 'usage: ./lkallio.py <a-zA-Z string>'
+	print ('usage: ./lkallio.py <a-zA-Z string>')
 	exit(0)
 
 def		search_morse_tree(inp, i, j):
@@ -31,4 +31,4 @@ if (len(sys.argv) != 2 or not len(sys.argv[1])
 or not search_morse_tree(sys.argv[1], 0, 0)):
 	print_usage()
 
-print ''.join(output[::-1])
+print (''.join(output[::-1]))

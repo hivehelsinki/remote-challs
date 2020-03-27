@@ -37,11 +37,10 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 input = sys.argv[1].upper()
-input = " ".join(input.split())
+len = len(" ".join(input.split()))
 
-if all(x.isalpha() or x.isspace() for x in input) and len(input) != 0:
+if all(x in morse_code for x in input) and len != 0:
     for elem in input:
-        if elem in morse_code:
             print(morse_code[elem], end = '')
     print()
 else:

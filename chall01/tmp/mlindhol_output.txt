@@ -1,0 +1,33 @@
+#1(no args) 
+  File "./mlindhol.py", line 25
+    print(" ", end="")
+                  ^
+SyntaxError: invalid syntax
+#2(empty) 
+  File "./mlindhol.py", line 25
+    print(" ", end="")
+                  ^
+SyntaxError: invalid syntax
+#3(two args) 
+  File "./mlindhol.py", line 25
+    print(" ", end="")
+                  ^
+SyntaxError: invalid syntax
+#4(invalid char) 
+  File "./mlindhol.py", line 25
+    print(" ", end="")
+                  ^
+SyntaxError: invalid syntax
+#5(soS) 
+#6(daily) 
+#7(proGrammer) 
+#8(sos daily) 
+#9(AwfXViwIATRPpEJFxCjn) 
+#10(CePwvYCExojnlxIYMmnG) 
+#11(NqidxKHSmisgTYMCnRnF) 
+#12(AZZLztCgwZZvEicNVZnf) 
+#13(tab    tab) 
+  File "./mlindhol.py", line 25
+    print(" ", end="")
+                  ^
+SyntaxError: invalid syntax

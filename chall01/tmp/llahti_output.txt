@@ -1,0 +1,26 @@
+#1(no args) 
+usage: ./xlogin.py <a-zA-Z string>
+#2(empty) 
+usage: ./xlogin.py <a-zA-Z string>
+#3(two args) 
+usage: ./xlogin.py <a-zA-Z string>
+#4(invalid char) 
+usage: ./xlogin.py <a-zA-Z string>
+#5(soS) 
+...---...$
+#6(daily) 
+-...-...-..-.--$
+#7(proGrammer) 
+.--..-.-----..-..-----..-.$
+#8(sos daily) 
+...---... -...-...-..-.--$
+#9(AwfXViwIATRPpEJFxCjn) 
+.-.--..-.-..-...-...--...--.-..--..--...---..-.-..--.-..----.
+#10(CePwvYCExojnlxIYMmnG) 
+-.-...--..--...--.---.-..-..----.----..-..-..-..-.-------.--.
+#11(NqidxKHSmisgTYMCnRnF) 
+-.--.-..-..-..--.-.......--.....--.--.-----.-.-..-.-...-.
+#12(AZZLztCgwZZvEicNVZnf) 
+.---..--...-..--..--.-.--..----..--.....-...-.-.-....---..-...-.
+#13(tab    tab) 
+usage: ./xlogin.py <a-zA-Z string>

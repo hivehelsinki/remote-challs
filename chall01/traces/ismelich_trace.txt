@@ -1,5 +1,0 @@
-4c4
-< usage: ./ismelich.py <a-zA-Z string>
----
-> 
-Diff: KO

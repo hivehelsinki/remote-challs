@@ -53,12 +53,12 @@ int check_if_valid_value(int color)
 
 char *hv_rgb2hex(int r, int g, int b)
 {
-  char *ret = (char *)malloc(7);
+  char *ret = (char *)malloc(8);
   char *temp;
 
   if (!check_if_valid_value(r) || !check_if_valid_value(g) || !check_if_valid_value(b))
   {
-    free(ret)
+    free(ret);
     return NULL;
   }
   strcpy(ret, "#");

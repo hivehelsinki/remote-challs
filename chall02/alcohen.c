@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-char    *color_to_hex(int color)
+static char    *color_to_hex(int color)
 {
     char *base16 = "0123456789abcdef";
     char *s;

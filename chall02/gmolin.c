@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 16:04:38 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/30 16:32:57 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/30 16:33:33 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char		*hv_rgb2hex(int r, int g, int b)
 	int		array[3] = {r, g, b};
 	int 	i;
 
+	i = 0;
 	while (i < 3)
 	{
 		if (array[i] < 0 || array[i] > 255)

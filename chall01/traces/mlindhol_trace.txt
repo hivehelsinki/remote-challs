@@ -1,0 +1,52 @@
+2c2,5
+< usage: ./mlindhol.py <a-zA-Z string>
+---
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+4c7,10
+< usage: ./mlindhol.py <a-zA-Z string>
+---
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+6c12,15
+< usage: ./mlindhol.py <a-zA-Z string>
+---
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+8c17,20
+< usage: ./mlindhol.py <a-zA-Z string>
+---
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+10d21
+< ...---...$
+12d22
+< -...-...-..-.--$
+14d23
+< .--..-.-----..-..-----..-.$
+16d24
+< ...---... -...-...-..-.--$
+18d25
+< .-.--..-.-..-...-...--...--.-..--..--...---..-.-..--.-..----.
+20d26
+< -.-...--..--...--.---.-..-..----.----..-..-..-..-.-------.--.
+22d27
+< -.--.-..-..-..--.-.......--.....--.--.-----.-.-..-.-...-.
+24d28
+< .---..--...-..--..--.-.--..----..--.....-...-.-.-....---..-...-.
+26c30,33
+< usage: ./mlindhol.py <a-zA-Z string>
+---
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+Diff: KO

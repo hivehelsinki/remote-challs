@@ -6,7 +6,7 @@
 /*   By: ihwang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:13:25 by ihwang            #+#    #+#             */
-/*   Updated: 2020/03/30 14:45:01 by ihwang           ###   ########.fr       */
+/*   Updated: 2020/03/30 14:55:20 by ihwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ char		*hv_rgb2hex(int r, int g, int b)
 {
 	char	*ret;
 
+	if (r > 255 || g > 255 || b > 255)
+		return (NULL);
+	if (r < 0 || g < 0 || b < 0)
+		return (NULL);
 	if (!(ret = (char*)malloc(sizeof(char) * 8)))
 		return (NULL);
 	bzero(ret, 8);

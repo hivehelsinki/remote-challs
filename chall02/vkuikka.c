@@ -17,7 +17,8 @@ char			*hv_rgb2hex(int r, int g, int b)
 		g < 0 || g > 255 ||
 		b < 0 || b > 255)
 		return (NULL);
-	res = strdup("#000000");
+	if (!(res = strdup("#000000")))
+		return (NULL);
 	ft_hex_to_str(res + 1, r);
 	ft_hex_to_str(res + 3, g);
 	ft_hex_to_str(res + 5, b);

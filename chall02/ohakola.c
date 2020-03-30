@@ -24,8 +24,6 @@ static char			*ft_itoa_hex(unsigned char nb)
 	bases = "0123456789abcdef";
 	if (!(arr = malloc(2 + 1)))
 		return (NULL);
-	if (nb == 0)
-		arr[0] = '0';
 	i = 0;
 	while (nb != 0)
 	{

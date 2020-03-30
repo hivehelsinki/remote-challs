@@ -1,0 +1,37 @@
+2c2
+< usage: ./phakakos.py <a-zA-Z string>
+---
+> ./auto-eval.sh:23: permission denied: ./phakakos.py
+4c4
+< usage: ./phakakos.py <a-zA-Z string>
+---
+> ./auto-eval.sh:29: permission denied: ./phakakos.py
+6c6
+< usage: ./phakakos.py <a-zA-Z string>
+---
+> ./auto-eval.sh:33: permission denied: ./phakakos.py
+8c8
+< usage: ./phakakos.py <a-zA-Z string>
+---
+> ./auto-eval.sh:37: permission denied: ./phakakos.py
+10d9
+< ...---...$
+12d10
+< -...-...-..-.--$
+14d11
+< .--..-.-----..-..-----..-.$
+16d12
+< ...---... -...-...-..-.--$
+18d13
+< .-.--..-.-..-...-...--...--.-..--..--...---..-.-..--.-..----.
+20d14
+< -.-...--..--...--.---.-..-..----.----..-..-..-..-.-------.--.
+22d15
+< -.--.-..-..-..--.-.......--.....--.--.-----.-.-..-.-...-.
+24d16
+< .---..--...-..--..--.-.--..----..--.....-...-.-.-....---..-...-.
+26c18
+< usage: ./phakakos.py <a-zA-Z string>
+---
+> ./auto-eval.sh:73: permission denied: ./phakakos.py
+Diff: KO

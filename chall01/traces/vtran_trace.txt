@@ -1,0 +1,3 @@
+4d3
+< usage: ./vtran.py <a-zA-Z string>
+Diff: KO

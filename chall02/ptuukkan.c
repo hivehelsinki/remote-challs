@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static char	itoc(int i)
+static char	ft_itoc(int i)
 {
 	if (i < 10)
 		return (i + '0');
@@ -34,12 +34,12 @@ char		*hv_rgb2hex(int r, int g, int b)
 	else if (b < 0)
 		b = 0;
 	rgb[0] = '#';
-	rgb[1] = itoc(r / 16);
-	rgb[2] = itoc(r % 16);
-	rgb[3] = itoc(g / 16);
-	rgb[4] = itoc(g % 16);
-	rgb[5] = itoc(b / 16);
-	rgb[6] = itoc(b % 16);
+	rgb[1] = ft_itoc(r / 16);
+	rgb[2] = ft_itoc(r % 16);
+	rgb[3] = ft_itoc(g / 16);
+	rgb[4] = ft_itoc(g % 16);
+	rgb[5] = ft_itoc(b / 16);
+	rgb[6] = ft_itoc(b % 16);
 	rgb[7] = '\0';
 	return (rgb);
 }

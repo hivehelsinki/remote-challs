@@ -13,6 +13,10 @@ char			*hv_rgb2hex(int r, int g, int b)
 {
 	char	*res;
 
+	if (r < 0 || r > 255 ||
+		g < 0 || g > 255 ||
+		b < 0 || b > 255)
+		return (NULL);
 	res = strdup("#000000");
 	ft_hex_to_str(res + 1, r);
 	ft_hex_to_str(res + 3, g);

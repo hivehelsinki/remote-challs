@@ -16,7 +16,7 @@ char *hv_rgb2hex(int r, int g, int b)
 	unsigned int 	color;
 	char			*color_string;
 
-	if (!(color_string = (char *)malloc(sizeof(char) * 7)))
+	if (!(color_string = (char *)malloc(sizeof(char) * 8)))
 		return NULL;
 
 	rgb[0] = ft_int_clamp(r, 0, 255);

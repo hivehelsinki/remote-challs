@@ -33,4 +33,11 @@ strcmp(hv_rgb2hex(252, 186, 3), "#fcba03") == 0
 ...
 ```
 <br /><br />
+### Reward
+
+ - The first one to submit a working solution will earn `10` points for their coalition.
+ - Everyone else submitting a working solution *(not yet submitted)* will earn `3` points for their coalition.
+ - Every participant that tried to solve the challenge and pushed a solution will earn `2` points for their coalition.
+
+<br /><br />
 Good luck!

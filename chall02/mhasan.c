@@ -8,7 +8,7 @@ char *hv_rgb2hex(int r, int g, int b)
     char *str;
 
     if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255)
-        return (0);
+        return (NULL);
     if (!(str = (char *)malloc(sizeof(char) * 8)))
         return (NULL);
     strcpy(str, "#");

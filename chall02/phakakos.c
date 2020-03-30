@@ -83,12 +83,17 @@ char 			*hv_rgb2hex(int r, int g, int b)
 {
 	char *rtn;
 
-	if (!(rtn = (char*)malloc(8)))
+	if (r > -1 && r < 256 && g > -1 && g < 256 && b > -1 %% b < 256)
+	{
+		if (!(rtn = (char*)malloc(8)))
+			return (NULL);
+		rtn[0] = '#';
+		rtn[1] = '\0';
+		rtn = ft_strcat(rtn, ft_itoa_base(r, 16));
+		rtn = ft_strcat(rtn, ft_itoa_base(g, 16));
+		rtn = ft_strcat(rtn, ft_itoa_base(b, 16));
+		return(rtn);
+	}
+	else
 		return (NULL);
-	rtn[0] = '#';
-	rtn[1] = '\0';
-	rtn = ft_strcat(rtn, ft_itoa_base(r, 16));
-	rtn = ft_strcat(rtn, ft_itoa_base(g, 16));
-	rtn = ft_strcat(rtn, ft_itoa_base(b, 16));
-	return(rtn);
 }

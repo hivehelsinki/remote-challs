@@ -23,7 +23,6 @@ char *hv_rgb2hex(int r, int g, int b)
 	rgb[1] = ft_int_clamp(g, 0, 255);
 	rgb[2] = ft_int_clamp(b, 0, 255);
 	color = rgb[0] << 16 | rgb[1] << 8 | rgb[2];
-	sprintf(&color_string[1], "%x", color);
-	color_string[0] = '#';
+	sprintf(color_string, "#%x", color);
 	return(color_string);
 }

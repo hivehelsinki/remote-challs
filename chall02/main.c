@@ -7,8 +7,8 @@ char *hv_rgb2hex(int r, int g, int b);
 void assert_results(int r, int g, int b, char *expected) {
         char *result;
         result = hv_rgb2hex(r, g, b);
-        printf("test: hv_rgb2hex(%d, %d, %d)\nexpected_output: '%s' ", r, g, b, result);
-        printf("user_output: '%s'\n", expected);
+        printf("test: hv_rgb2hex(%d, %d, %d)\nexpected_output: '%s' ", r, g, b, expected);
+        printf("user_output: '%s'\n", result);
         assert(!strcmp(result, expected));
 }
 

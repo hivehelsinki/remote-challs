@@ -1,2 +1,0 @@
-test: hv_rgb2hex(252, 186, 3)
-expected_output: '#fcba03°' user_output: '#fcba03'

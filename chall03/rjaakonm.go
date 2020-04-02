@@ -54,13 +54,9 @@ func main() {
 	content := myGetResponse(url)
 	fmt.Println("answer: " + content)
 
-	// Split string with " " to get value part and response url
 	parts := strings.Split(string(content), " ")
-	// Split value part with "=" or "," to get values
 	subparts := strings.FieldsFunc(parts[0], mySplit)
-	// Convert RGB values to hex, trying without printf
 	strhex := myColorConverter(subparts[3], subparts[5], subparts[7])
-	// Replace id and hex from response url
 	r := strings.NewReplacer("<id>", subparts[1], "<hex>", strhex)
 	newurl := r.Replace(parts[6])
 

@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func http_post_hex(id string, hex string)string{
+func http_get_hex(id string, hex string)string{
 	result, err := http.Get("https://chall03.hive.fi/?id="+id+"&resp="+hex)
 	if err != nil {
 		fmt.Println(err)
@@ -46,6 +46,6 @@ func main(){
 	g, _ := strconv.Atoi(g_array[1])
 	b, _ := strconv.Atoi(b_array_only_b[0])
 	hex := fmt.Sprintf("%02x%02x%02x", r, g, b)
-	body := http_post_hex(id, hex)
+	body := http_get_hex(id, hex)
 	fmt.Println(body)
 }

@@ -30,9 +30,7 @@ func	sendResponse(response string, addr string) int {
 	r, _ := strconv.Atoi(strings.Split(values[1], "=")[1])
 	g, _ := strconv.Atoi(strings.Split(values[2], "=")[1])
 	b, _ := strconv.Atoi(strings.Split(values[3], "=")[1])
-	hex := fmt.Sprintf("%02x", r)
-	hex += fmt.Sprintf("%02x", g)
-	hex += fmt.Sprintf("%02x", b)
+	hex := fmt.Sprintf("%02x%02x%02x", r, g, b)
 	response = getData(addr + "?" + values[0] + "&resp=" + hex)
 	if (response == "error") {
 		return (0)

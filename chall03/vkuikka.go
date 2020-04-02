@@ -24,7 +24,7 @@ func	getData(addr string) string {
 	return responseString
 }
 
-func	sendResponse(response string, addr string) int {
+func	sendResponse(response string, addr string) bool {
 	values_str := strings.Split(response, " ")[0]
 	values := strings.Split(values_str, ",")
 	r, _ := strconv.Atoi(strings.Split(values[1], "=")[1])
@@ -33,9 +33,9 @@ func	sendResponse(response string, addr string) int {
 	hex := fmt.Sprintf("%02x%02x%02x", r, g, b)
 	response = getData(addr + "?" + values[0] + "&resp=" + hex)
 	if (response == "error") {
-		return (0)
+		return (false)
 	}
-	return (1)
+	return (true)
 }
 
 func main() {
@@ -43,7 +43,7 @@ func main() {
 
 	response := getData(addr)
 	fmt.Println("")
-	if (response == "error" || sendResponse(response, addr) == 0) {
+	if (response == "error" || !sendResponse(response, addr)) {
 		fmt.Println("error")
 	}
 	return

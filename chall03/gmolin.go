@@ -14,6 +14,9 @@ func http_post_hex(id string, hex string)string{
 		fmt.Println(err)
 	}
 	body, err := ioutil.ReadAll(result.Body)
+	if err != nil{
+		fmt.Println(err)
+	}
 	return string(body)
 }
 

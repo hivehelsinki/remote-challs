@@ -11,13 +11,11 @@ import(
 )
 
 func main(){
-	
 	start := time.Now()
 	resp, err := http.Get("https://chall03.hive.fi/")
 	if err != nil {
 		log.Fatalln(err)
 	}
-	
 	body, err := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
 	if err != nil{
@@ -42,7 +40,6 @@ func main(){
 	if err != nil {
 		log.Fatalln(err)
 	}
-
 	body1, err := ioutil.ReadAll(resp2.Body)
 	defer resp2.Body.Close()
 	if err != nil{

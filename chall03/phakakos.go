@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"time"
 )
 
 func hexaConv(num int) string {
@@ -32,6 +33,8 @@ func hexaConv(num int) string {
 
 
 func main() {
+	start := time.Now()
+	fmt.Printf("Making the request\n")
 	resp, err := http.Get("https://chall03.hive.fi/")
 	if err != nil {
     log.Fatal(err)
@@ -43,7 +46,8 @@ func main() {
 			log.Fatal(err)
 		}
 		bodyString := string(bodyBytes)
-		fmt.Printf(bodyString)
+		//t := time.Now()
+		fmt.Printf("%d MS | %s\n", time.Now().Sub(start).Milliseconds(), bodyString)
 		i, id, red, green, blue, valNum, reading := 0, 0, 0, 0, 0, 0, 0
 		for valNum != 4 {
 			if (bodyString[i] == '='){
@@ -82,14 +86,14 @@ func main() {
 			}
 			i++
 		}
-		fmt.Printf("\nid %d red %d green %d blue %d\n", id, red, green, blue)
+		fmt.Printf("%d MS | id %d red %d green %d blue %d\n", time.Now().Sub(start).Milliseconds(), id, red, green, blue)
 		
 		cRed, cGreen, cBlue := hexaConv(red), hexaConv(green), hexaConv(blue)
 		fColor := cRed + cGreen + cBlue
-		fmt.Printf("color: %s\n", fColor)
+		fmt.Printf("%d MS | color: %s\n", time.Now().Sub(start).Milliseconds(), fColor)
 		fGetAdd := "https://chall03.hive.fi/?id=" + strconv.FormatInt(int64(id), 10) + "&resp=" + fColor
-		fmt.Printf("%s\n", fGetAdd)
-		
+
+		fmt.Printf("%d MS | second GET to %s\n", time.Now().Sub(start).Milliseconds(), fGetAdd)
 		respo, err := http.Get(fGetAdd)
 		if err != nil {
 			log.Fatal(err)
@@ -101,9 +105,9 @@ func main() {
 				log.Fatal(err)
 			}
 			bodyString2 := string(fbodyBytes)
-			fmt.Printf("Response %d\n%s", respo.StatusCode, bodyString2)
+			fmt.Printf("%d MS | Response %d\n%s", time.Now().Sub(start).Milliseconds(), respo.StatusCode, bodyString2)
 		} else {
-			fmt.Printf("Response %d", respo.StatusCode)
+			fmt.Printf("%d MS | Response %d", time.Now().Sub(start).Milliseconds(), respo.StatusCode)
 		}
 	}
 }

@@ -2,17 +2,21 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"io/ioutil"
-	"time"
-	"strings"
-	"strconv"
 	"log"
+	"net/http"
+	"strconv"
+	"strings"
+	"time"
 )
 
-var g_time_start = time.Now()
+var gTimeStart = time.Now()
 
-func make_get_request(url string) string {
+func elapsedTime() time.Duration {
+	return time.Since(gTimeStart) / 1e6
+}
+
+func makeGetRequest(url string) string {
 	resp, err := http.Get(url)
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -22,33 +26,31 @@ func make_get_request(url string) string {
 	return string(body)
 }
 
-func generate_hex_request_url(url string, id string, resp_hex string) string {
-	return url + "?id=" + id + "&resp=" + resp_hex
+func generateHexRequestURL(url string, id string, respHex string) string {
+	return url + "?id=" + id + "&resp=" + respHex
 }
 
 func main() {
-	
 	url := "https://chall03.hive.fi/"
-	elapsed := time.Since(g_time_start) / 1e6
-	fmt.Printf("%dms - GET %s\n", elapsed, url)
-	
-	body := make_get_request(url)
-	elapsed = time.Since(g_time_start) / 1e6
-	fmt.Printf("%dms - GET %s\n", elapsed, url)
+	fmt.Printf("%dms - GET %s\n", elapsedTime(), url)
+
+	body := makeGetRequest(url)
+	fmt.Printf("%dms - GET %s\n", elapsedTime(), url)
 	fmt.Printf("\tanswer:%s\n", body)
-	
+
 	s := strings.Split(body, "=")
 	id := strings.Split(s[1], ",")[0]
 	r, _ := strconv.Atoi(strings.Split(s[2], ",")[0])
 	g, _ := strconv.Atoi(strings.Split(s[3], ",")[0])
 	b, _ := strconv.Atoi(strings.Split(s[4], " ")[0])
-	resp_hex := fmt.Sprintf("%02x%02x%02x", r, g, b)
+	respHex := fmt.Sprintf("%02x%02x%02x", r, g, b)
 
-	req_url := generate_hex_request_url(url, id, resp_hex)
-	fmt.Printf("%dms - GET %s\n", elapsed, req_url)
-	body = make_get_request(req_url)
-	elapsed = time.Since(g_time_start) / 1e6
-	fmt.Printf("%dms - GET %s\n", elapsed, req_url)
+	reqURL := generateHexRequestURL(url, id, respHex)
+
+	fmt.Printf("%dms - GET %s\n", elapsedTime(), reqURL)
+	body = makeGetRequest(reqURL)
+
+	fmt.Printf("%dms - GET %s\n", elapsedTime(), reqURL)
 	fmt.Printf("\tanswer: %s\n", body)
-	fmt.Printf("%dms - DONE\n", elapsed)
+	fmt.Printf("%dms - DONE\n", elapsedTime())
 }

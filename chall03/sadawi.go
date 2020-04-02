@@ -27,11 +27,6 @@ func main() {
 	rhex := fmt.Sprintf("%02x", r)
 	ghex := fmt.Sprintf("%02x", g)
 	bhex := fmt.Sprintf("%02x", b)
-	log.Println(s)
-	log.Println(id)
-	log.Println(rhex)
-	log.Println(ghex)
-	log.Println(bhex)
 	result :=  "https://chall03.hive.fi/?" + id + "&resp=" + rhex + ghex + bhex
 	log.Println(result)
 	resp1, err := http.Get(result)

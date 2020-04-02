@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
 
-func convertRGB(rs, gs, bs string) string {
+func convertRGBToHex(rs, gs, bs string) string {
 	r, err := strconv.Atoi(rs)
 	if err != nil {
 		fmt.Println(err)
@@ -26,28 +27,38 @@ func convertRGB(rs, gs, bs string) string {
 }
 
 func main() {
-	resp, err := http.Get("https://chall03.hive.fi/")
+	getResponse, err := http.Get("https://chall03.hive.fi/")
 	if err != nil {
 		fmt.Println(err)
+		os.Exit(1)
 	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	defer getResponse.Body.Close()
+	getBody, err := ioutil.ReadAll(getResponse.Body)
 	if err != nil {
 		fmt.Println(err)
+		os.Exit(1)
 	}
-	bd := strings.Split(string(body), " ")[0]
+	bd := strings.Split(string(getBody), " ")[0]
 	d := strings.Split(bd, ",")
-
 	id := strings.Split(d[0], "=")[1]
 	r := strings.Split(d[1], "=")[1]
 	g := strings.Split(d[2], "=")[1]
 	b := strings.Split(d[3], "=")[1]
-	hex := convertRGB(r, g, b)
+	hex := convertRGBToHex(r, g, b)
 
-	presp, err := http.Post("https://chall03.hive.fi/?id="+id+"&resp="+hex, "", nil)
+	req, err := http.NewRequest("POST", "https://chall03.hive.fi", nil)
+	q := req.URL.Query()
+	q.Add("id", id)
+	q.Add("resp", hex)
+	req.URL.RawQuery = q.Encode()
+
+	postResponse, err := http.DefaultClient.Do(req)
 	if err != nil {
 		fmt.Println(err)
+		os.Exit(1)
 	}
-	postbody, err := ioutil.ReadAll(presp.Body)
+	defer postResponse.Body.Close()
+
+	postbody, err := ioutil.ReadAll(postResponse.Body)
 	fmt.Println(string(postbody))
 }

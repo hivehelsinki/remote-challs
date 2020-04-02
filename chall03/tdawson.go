@@ -5,35 +5,42 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
-func httpGet(url string) (bodyStr string) {
+func execTime(start time.Time) {
+	fmt.Printf("Finished in %dms\n", time.Since(start).Milliseconds())
+}
+
+func httpGet(url string) string {
+	fmt.Printf("GET:\t%s\n", url)
 	res, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Printf("STATUS: %d %s\n", res.StatusCode, http.StatusText(res.StatusCode))
+
 	body, err := ioutil.ReadAll(res.Body)
 	res.Body.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(string(body))
+	fmt.Printf("BODY:\t%s\n\n", string(body))
 	return string(body)
 }
 
-func parseBody(body string) (response string) {
+func buildQuery(body string) string {
 	var id, r, g, b int
-	n, err := fmt.Sscanf(body, "id=%d,r=%d,g=%d,b=%d - Send your response here: chall03.hive.fi/?id=<id>&resp=<hex>", &id, &r, &g, &b)
+	n, err := fmt.Sscanf(body, "id=%d,r=%d,g=%d,b=%d", &id, &r, &g, &b)
 	if err != nil || n != 4 {
 		log.Fatal(err)
 	}
-	response = fmt.Sprintf("https://chall03.hive.fi/?id=%d&resp=%02x%02x%02x", id, r, g, b)
-	fmt.Println(response)
-	return response
+	return fmt.Sprintf("?id=%d&resp=%02x%02x%02x", id, r, g, b)
 }
 
 func main() {
+	defer execTime(time.Now())
 	url := "https://chall03.hive.fi/"
-	response := parseBody(httpGet(url))
-	httpGet(response)
+	query := buildQuery(httpGet(url))
+	httpGet(url + query)
 }

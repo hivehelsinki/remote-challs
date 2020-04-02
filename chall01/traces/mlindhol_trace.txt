@@ -1,37 +1,52 @@
-2c2
+2c2,5
 < usage: ./mlindhol.py <a-zA-Z string>
 ---
-> ./auto-eval.sh:23: permission denied: ./mlindhol.py
-4c4
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+4c7,10
 < usage: ./mlindhol.py <a-zA-Z string>
 ---
-> ./auto-eval.sh:29: permission denied: ./mlindhol.py
-6c6
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+6c12,15
 < usage: ./mlindhol.py <a-zA-Z string>
 ---
-> ./auto-eval.sh:33: permission denied: ./mlindhol.py
-8c8
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+8c17,20
 < usage: ./mlindhol.py <a-zA-Z string>
 ---
-> ./auto-eval.sh:37: permission denied: ./mlindhol.py
-10d9
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
+10d21
 < ...---...$
-12d10
+12d22
 < -...-...-..-.--$
-14d11
+14d23
 < .--..-.-----..-..-----..-.$
-16d12
+16d24
 < ...---... -...-...-..-.--$
-18d13
+18d25
 < .-.--..-.-..-...-...--...--.-..--..--...---..-.-..--.-..----.
-20d14
+20d26
 < -.-...--..--...--.---.-..-..----.----..-..-..-..-.-------.--.
-22d15
+22d27
 < -.--.-..-..-..--.-.......--.....--.--.-----.-.-..-.-...-.
-24d16
+24d28
 < .---..--...-..--..--.-.--..----..--.....-...-.-.-....---..-...-.
-26c18
+26c30,33
 < usage: ./mlindhol.py <a-zA-Z string>
 ---
-> ./auto-eval.sh:73: permission denied: ./mlindhol.py
+>   File "./mlindhol.py", line 25
+>     print(" ", end="")
+>                   ^
+> SyntaxError: invalid syntax
 Diff: KO

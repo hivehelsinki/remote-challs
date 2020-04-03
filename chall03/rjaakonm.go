@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -18,7 +17,6 @@ func mySplit(r rune) bool {
 func myErrorCheck(err error) {
 	if err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 }
 

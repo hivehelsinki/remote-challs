@@ -11,9 +11,13 @@ import (
 	"time"
 )
 
-func get_chall(address string) (id_rgb_str string) {
+func log_prefixed(msg string) {
 	fmt.Printf("%d", time.Since(StartTime).Milliseconds())
-	log.Println("ms - GET ", address)
+	log.Println("ms - ", msg)
+}
+
+func get_request(address string) (id_rgb_str string) {
+	log_prefixed("GET " + address)
 	chall_req, err := http.Get(address)
 	if err != nil {
 		log.Fatal(err)
@@ -24,9 +28,7 @@ func get_chall(address string) (id_rgb_str string) {
 	}
 	chall_req.Body.Close()
 	id_rgb_str = fmt.Sprintf("%s", raw_id_rgb)
-	fmt.Printf("%d", time.Since(StartTime).Milliseconds())
-	log.Println("ms - GET ", address)
-	log.Println("\tanswer: ", id_rgb_str)
+	log_prefixed("GET " + address + "\n\tanswer: " + id_rgb_str)
 	return
 }
 
@@ -55,8 +57,7 @@ func extract_values(splitted []string) (id_value int, rgbs [3]int) {
 }
 
 func get_answer(ans_address string) {
-	fmt.Printf("%d", time.Since(StartTime).Milliseconds())
-	log.Println("ms - GET ", ans_address)
+	log_prefixed("GET " + ans_address)
 	answer_req, err := http.Get(ans_address)
 	if err != nil {
 		log.Fatal(err)
@@ -67,21 +68,18 @@ func get_answer(ans_address string) {
 	}
 	answer_req.Body.Close()
 	answer_str := fmt.Sprintf("%s", parsed_answer)
-	fmt.Printf("%d", time.Since(StartTime).Milliseconds())
-	log.Println("ms - GET ", ans_address)
-	log.Println("\tanswer: ", answer_str)
+	log_prefixed("GET " + ans_address + "\n\tanswer: " + answer_str)
 }
 
 var StartTime = time.Now()
 
 func main() {
 	log.SetFlags(0)
-	chall_body := get_chall("https://chall03.hive.fi/")
-	reqexp_values := regexp_parse_before_slash(chall_body)
+	get_answer := get_request("https://chall03.hive.fi/")
+	reqexp_values := regexp_parse_before_slash(get_answer)
 	id_value, rgbs := extract_values(strings.Split(reqexp_values, "="))
 	hex_string := fmt.Sprintf("%x%x%x", rgbs[0], rgbs[1], rgbs[2])
 	ans_address := fmt.Sprintf("https://chall03.hive.fi/?id=%d&resp=%s", id_value, hex_string)
-	get_answer(ans_address)
-	fmt.Printf("%d", time.Since(StartTime).Milliseconds())
-	log.Println("ms - DONE")
+	get_answer = get_request(ans_address)
+	log_prefixed("DONE")
 }

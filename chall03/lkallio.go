@@ -20,26 +20,26 @@ func retrieve_resp(address string) string {
 	return string(out)
 }
 
-func get_values(a string) (int, int) {
-	i := 0
+func get_values(content string) (int, int) {
 	id := 0
 	hex := 0
-	meta_i := 0
-	for meta_i < 4 {
-		for a[i] < '0' || a[i] > '9' {
+	loop_phase := 0
+	i := 0
+	for loop_phase < 4 {
+		for content[i] < '0' || content[i] > '9' {
 			i += 1
 		}
 		num := 0
-		for !(a[i] < '0' || a[i] > '9') {
-			num = num * 10 + int(a[i]) - '0'
+		for !(content[i] < '0' || content[i] > '9') {
+			num = num * 10 + int(content[i]) - '0'
 			i += 1
 		}
-		if meta_i == 0 {
+		if loop_phase == 0 {
 			id = num
 		} else {
 			hex = hex * 0x100 + num
 		}
-		meta_i += 1
+		loop_phase += 1
 	}
 	return id, hex
 }

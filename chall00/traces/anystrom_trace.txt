@@ -1,2 +1,0 @@
-Compilation: OK
-Diff: OK

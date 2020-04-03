@@ -1,6 +1,0 @@
-Compilation: OK
-2c2
-< #1 1 = 1
----
-> #1 1 = 0
-Diff: KO

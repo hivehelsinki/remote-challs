@@ -56,21 +56,6 @@ func extract_values(splitted []string) (id_value int, rgbs [3]int) {
 	return
 }
 
-func get_answer(ans_address string) {
-	log_prefixed("GET " + ans_address)
-	answer_req, err := http.Get(ans_address)
-	if err != nil {
-		log.Fatal(err)
-	}
-	parsed_answer, err := ioutil.ReadAll(answer_req.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-	answer_req.Body.Close()
-	answer_str := fmt.Sprintf("%s", parsed_answer)
-	log_prefixed("GET " + ans_address + "\n\tanswer: " + answer_str)
-}
-
 var StartTime = time.Now()
 
 func main() {

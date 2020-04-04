@@ -13,14 +13,6 @@ import (
 	"time"
 )
 
-const (
-	Reset = "\033[0m"
-	Red   = "\033[31m"
-	Green = "\033[32m"
-	Blue  = "\033[34m"
-	Gray  = "\033[37m"
-)
-
 var waitingList = make(map[int]string)
 var counter = 0
 

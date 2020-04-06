@@ -8,8 +8,8 @@ def main():
 	for line in sys.stdin:
 		lines.append(list(line))
 		counted += 1
-	lines[0] ="".join(lines[0])
 	try:
+		lines[0] ="".join(lines[0])
 		size = int(lines[0])
 	except:
 		return

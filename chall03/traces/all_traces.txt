@@ -1,0 +1,3 @@
+OK: alcohen, gmolin, hopham, krusthol, ksappi, lkallio, llahti, mdesta, mlindhol, mtuomine, npimenof, osalmine, phakakos, ptuukkan, rjaakonm, rpehkone, sadawi, srouhe, tdawson, tkuumola, vkuikka, vtran, wkorande
+
+NOT_OK:

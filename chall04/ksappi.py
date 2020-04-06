@@ -35,7 +35,6 @@ oldChecksum = calculateHashOfArray(board)
 while True:
 	for rowIndex in range(len(board) - 2, -1, -1):
 		row = board[rowIndex]
-		print (row, '###')
 		for i in range(size):
 			if row[i] == '.':
 				if board[rowIndex + 1][i] == ' ':
@@ -48,6 +47,5 @@ while True:
 		break
 	oldChecksum = checksum
 
-print('Result:')
 for row in board:
 	print(row)

@@ -1,6 +1,16 @@
 #! /usr/bin/python3
 
-i = int(input())
+import sys
+
+def error(str):
+	print("Error: " + str)
+	sys.exit()
+
+try:
+	i = int(input())
+except:
+	error("Input is not a digit.")
+	sys.exit()
 
 arr = []
 for j in range(i):

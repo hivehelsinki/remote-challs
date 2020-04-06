@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Version: Python 3.6.9
+
 size = int(input())
 grid = []
 

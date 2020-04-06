@@ -2,34 +2,41 @@
 
 # Version: Python 3.6.9
 
-size = int(input())
-grid = []
-
-for i in range(size):
-    grid.append(list(input()))
+def error_input(msg):
+    print(msg)
+    quit()
 
 def can_move(next_under):
     if (next_under == ' '):
         return True
     return False
 
-moved = True
-while moved:
-    moved = False
-    for row in range(size):
-        for col in range(size):
-            if (grid[row][col] == '.'):
-                if (row + 1 < size and can_move(grid[row + 1][col])):
-                    grid[row][col] = ' '
-                    grid[row + 1][col] = '.'
-                    moved = True
+if __name__ == '__main__':
+    size = input()
+    if size.isdigit():
+        size = int(size)
+    else:
+        error_input("Enter a positive number")
 
-for i in grid:
-    for j in i:
-        print(j, end="")
-    print()
+    grid = [list(input()) for i in range(size)] # Split 'size' amount of lines into lists of characters
 
+    # Check that every line in grid is of the correct length
+    for row in grid:
+        if (len(row) != size):
+            error_input("Length of each line must be same as size")
 
+    moved = True
+    # Loop ends when no sand has been moved
+    while moved:
+        moved = False
+        for row in range(size):
+            for col in range(size):
+                if (row + 1 < size and grid[row][col] == '.'):
+                    if (can_move(grid[row + 1][col])):
+                        grid[row][col] = ' '
+                        grid[row + 1][col] = '.'
+                        moved = True
 
-          
-
+    for row in grid:
+        output_str = ''.join(i for i in row)
+        print(output_str)

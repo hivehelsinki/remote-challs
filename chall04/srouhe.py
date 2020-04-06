@@ -69,6 +69,7 @@ class SandDealer():
 if __name__ == '__main__':
 
 	world = SandDealer()
-	world.drop_sand()
-	world.print_world()
+	if world.size is not None and world.world != []:
+		world.drop_sand()
+		world.print_world()
 

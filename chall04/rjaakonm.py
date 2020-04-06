@@ -7,7 +7,10 @@ def main():
 	for line in sys.stdin:
 		lines.append(list(line))
 	lines[0] ="".join(lines[0])
-	size = int(lines[0])
+	try:
+		size = int(lines[0])
+	except:
+		return
 	if size == len(lines) - 1:
 		i = 1
 		while i < size:

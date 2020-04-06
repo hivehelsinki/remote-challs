@@ -1,48 +1,74 @@
 #!/usr/bin/python3
-
 import sys
 
-def split(word): 
-    return [char for char in word]
 
-def parse_stdin():
-	world = []
-	count = 0
-	try:
-		for line in sys.stdin:
-			if count == 0:
-				size = int(line)
-			elif count <= size:
-				world.append(split(line.replace('\n', '')))
-			count += 1
-	except Exception as e:
-		print(f'Error parsing input: [{e}]')
-		exit(1)
-	return size, world
+class SandDealer():
+	def __init__(self):
+		self.size = self.parse_size()
+		self.world = self.parse_world()
 
-def check_chars(c1, c2):
-	if c1 not in '. #' or c2 not in '. #':
-		print('Invalid character')
-		exit(1)
+	def drop_sand(self):
+		for x in range(0, self.size):
+			self.drop_one(x)	
 
-def sand_dealer(size: int, world: list):
-	for y in range(0, size - 1):
-		for x in range(0, size):
-			check_chars(world[y][x], world[y + 1][x])
-			if world[y][x] == '.' and world[y + 1][x] == ' ':
-				world[y][x] = ' '
-				world[y + 1][x] = '.'
-	return world
+	def drop_one(self, x):
+		for y in range(0, self.size - 1):
+			if self.world[y][x] == '.' and self.world[y + 1][x] == ' ':
+				self.world[y][x] = ' '
+				self.world[y + 1][x] = '.'
+			else:
+				break
 
-def print_world(result: list):
-	sep = ''
-	for line in result:
-		s = sep.join(line)
-		print(s)
+	def print_world(self):
+		sep = ''
+		for line in self.world:
+			s = sep.join(line)
+			print(s)
+
+	# Preprocessing
+	def parse_world(self):
+		world = []
+		try:
+			for i, line in enumerate(sys.stdin):
+				world.append(self.check_chars(line, self.size))
+				if i > self.size - 2:
+					break
+		except Exception as e:
+			print(f'Error parsing input: [{e}]')
+			exit(1)
+		return world
+
+	# Preprocessing
+	def check_chars(self, line, size):
+		line = self.split(line.replace('\n', ''))
+		if len(line) != size:
+			print(f'Invalid line length')
+			exit(1)
+		for c in line:
+			if c not in '. #':
+				print(f'Invalid character `{c}`')
+				exit(1)
+		return line
+
+	# Preprocessing
+	def parse_size(self):
+		try:
+			for line in sys.stdin:
+				return int(line)
+		except Exception as e:
+			print(e)
+			exit(1)
+
+	# Utility
+	def split(self, word): 
+		return [char for char in word]
+
+
 
 
 if __name__ == '__main__':
 
-	size, world = parse_stdin()
-	result = sand_dealer(size, world)
-	print_world(result)
+	world = SandDealer()
+	world.drop_sand()
+	world.print_world()
+

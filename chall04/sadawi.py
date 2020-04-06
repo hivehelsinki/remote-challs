@@ -9,7 +9,7 @@ for j in range(i):
 flag = 1
 while flag:
 	flag = 0
-	for j in range(3, -1, -1):
+	for j in range(i -2, -1, -1):
 		for k, c in enumerate(arr[j]):
 			if c == '.':
 				if arr[j+1][k] == ' ':

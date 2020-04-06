@@ -54,8 +54,8 @@ if __name__ == "__main__":
 	except:
 		map_error_exit("Given N is not an integer")
 	else:
-		if len(raw) - 1 < n:
-			map_error_exit("Given map is smaller than N")
+		if len(raw) - 1 != n:
+			map_error_exit("Given map is not N sized")
 	sim = FallingSand(n, raw[1:])
 	sim.simulate()
 	print(sim)

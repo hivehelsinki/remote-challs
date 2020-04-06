@@ -6,7 +6,10 @@ def main():
 	board = []
 	for line in sys.stdin:
 		board.append(list(line))
-	board_size = int(board[0][0])
+	board_size = int
+	for i in board[0]:
+		if i.isdigit():
+			board_size = int(i)
 	if board_size != len(board) - 1:
 		print("Error: Invalid map size")
 		return

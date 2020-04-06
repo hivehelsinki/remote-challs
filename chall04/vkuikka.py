@@ -10,6 +10,7 @@ def main():
 	for i in range(size):
 		world.append(input())
 		if len(world[i]) != size:
+			print("Wrong length")
 			sys.exit()
 	for y in reversed(range(size)):
 		for x, c in enumerate(world[y]):

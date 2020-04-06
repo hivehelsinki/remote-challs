@@ -1,42 +1,43 @@
 #!/usr/bin/python3
+#python 3.6.9
 
 import re
 import sys
 
-def checkIfValidinput(siz, arr):
+def exitIfNotValidInput(siz, arr):
     i = siz - 1
     while i >= 0:
         if (len(arr[i]) != siz) :
             print("input not a grid")
             sys.exit()
         i -= 1
-    listToStr = returnListToStr(arr)
+    listToStr = arrToStr(arr)
     maximum = str(siz * siz)
     regex = "[. #]{" + maximum + "}"
     if not re.match(regex, listToStr) :
         print("usage: [. #]*")
         sys.exit()
 
-def returnListToStr(arr):
+def arrToStr(arr):
     return ''.join(map(str, arr))
 
 def droppingDots(listToStr, siz):
-    StrToList = list(listToStr)
+    StrToArr = list(listToStr)
     i = 0
     allcellsbutnotlastcolumns = siz * siz - siz
     while (i < allcellsbutnotlastcolumns):
-        if (StrToList[i] == '.' and StrToList[i + siz] == ' '):
-            StrToList[i] = ' '
-            StrToList[i + siz] = '.'
+        if (StrToArr[i] == '.' and StrToArr[i + siz] == ' '):
+            StrToArr[i] = ' '
+            StrToArr[i + siz] = '.'
             i = 0
         i += 1
-    return StrToList
+    return StrToArr
 
-def printter(StrToList, siz):
+def printter(StrToArr, siz):
     i = 0
     while (i < siz):
-        StrToList[i : i + siz] = [''.join(StrToList[i : i + siz])]
-        print(StrToList[i])
+        StrToArr[i : i + siz] = [''.join(StrToArr[i : i + siz])]
+        print(StrToArr[i])
         i += 1
 
 def main ():
@@ -46,7 +47,7 @@ def main ():
     while i < siz:
         arr.append(input())
         i += 1
-    checkIfValidinput(siz, arr)
-    done = droppingDots(returnListToStr(arr), siz)
+    exitIfNotValidInput(siz, arr)
+    done = droppingDots(arrToStr(arr), siz)
     printter(done, siz)
 main()

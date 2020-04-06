@@ -3,14 +3,6 @@
 
 import sys
 
-def simulate(grid):
-    for row in range(size - 2, -1, -1):
-        for col, c in enumerate(grid[row]):
-            if (c is '.' and grid[row+1][col] is ' '):
-                grid[row][col] = ' '
-                grid[row+1][col] = '.'
-                simulate(grid)
-
 size = input()
 if not (size.isdigit()):
     sys.exit('Error: Not a positive integer.')
@@ -20,10 +12,17 @@ grid = []
 for _ in range(size):
     row = input()
     if len(row) != size or not all(c in ' #.' for c in row):
-        sys.exit('Error: Input row is invalid.')
+        sys.exit('Error: Inputted row is not valid.')
     grid.append(list(row))
 
-simulate(grid)
+settled = False
+while not (settled):
+    settled = True
+    for row in range(size - 2, -1, -1):
+        for col, c in enumerate(grid[row]):
+            if (c is '.' and grid[row+1][col] is ' '):
+                grid[row][col] = ' '
+                grid[row+1][col] = '.'
+                settled = False
 
-for row in grid:
-    print(''.join(row))
+print('\n'.join(''.join(row) for row in grid))

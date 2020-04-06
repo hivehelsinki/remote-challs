@@ -18,10 +18,13 @@ def main():
 		while i < size:
 			j = 0
 			while j < size:
-				if lines[i][j] == '.' and lines[i + 1][j] == ' ':
-					lines[i][j] = ' '
-					lines[i + 1][j] = '.'
-				elif lines[i][j] != '.' and lines[i][j] != '#' and lines[i][j] != ' ':
+				try:
+					if lines[i][j] == '.' and lines[i + 1][j] == ' ':
+						lines[i][j] = ' '
+						lines[i + 1][j] = '.'
+					elif lines[i][j] != '.' and lines[i][j] != '#' and lines[i][j] != ' ':
+						return
+				except:
 					return
 				j += 1
 			if lines[i][j] != '\n' and lines[i][j] != '\0':

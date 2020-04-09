@@ -15,6 +15,7 @@ rescue
 end
 visited = []
 while (article != "Philosophy")
+	visited << article
 	file = open(url + article)
 	content = file.read
 	matches = content.scan(/(?<=(<p>)|(<h[0-9])).+?<a href=\"\/wiki\/([^\":]*)"/mu).drop(1)
@@ -26,7 +27,6 @@ while (article != "Philosophy")
 			puts "skip " + items[2] + " already visited"
 		end
 	end
-	visited << article
 	puts "	Going to " + article
 end
 puts "Found Philosophy!"

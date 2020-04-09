@@ -69,11 +69,11 @@ end
 
 
 def main()
-	if ARG.downcase == "philosophy"
-		puts "You're already there"
-		exit
-	end
 	if ARG
+		if ARG.downcase == "philosophy"
+			puts "You're already there"
+			exit
+		end
 		puts "Road to Philosophy... CTRL+C to exit"
 		aristotle(ARG.capitalize(), 0)
 	else

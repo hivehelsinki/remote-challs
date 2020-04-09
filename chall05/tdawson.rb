@@ -1,39 +1,50 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+#ruby 2.5.1p57
 
 require 'open-uri'
 require 'nokogiri'
-require "net/http"
 
-$wikiURL = String.new("https://en.wikipedia.org/wiki/")
+$WIKI_URL = String.new("https://en.wikipedia.org/wiki/")
 $seen_links = []
 $counter = 0
 
-def next_link(article)
-	doc = Nokogiri::HTML.parse(open($wikiURL + article))
+def open_URL(url)
+	begin
+		file = open(url)
+	rescue
+		abort("no wikipedia page for this word!")
+	end
+end
+
+def next_wiki_link(links, i)
+	until links[i].to_s.match(/^\/wiki\/.+$/) do
+		i += 1
+	end
+	return i
+end	
+
+def find_philosophy(article)
+	doc = Nokogiri::HTML.parse(open_URL($WIKI_URL + article))
 	attrs = doc.xpath('//p//a/@href') 
-	attrs.map {|attr| attr.value} 
-	article = attrs[0].to_s.split('/')[2]
+	attrs.map {|attr| attr.value}
+	i = 0
+	i = next_wiki_link(attrs, i)
+	article = attrs[i].to_s.split('/')[2]
 	if article.eql?("Philosophy")
 		puts "!!! Reach Philosophy !!!"
 		exit
 	end
 	if ($seen_links.include?(article))
-		puts "Skip " + article + ", already seen this one"
-		article = attrs[1].to_s.split('/')[2]
+		puts "Skip #{article}, already seen this one"
+		i = next_wiki_link(attrs, i)
+		article = attrs[i].to_s.split('/')[2]
 	else
 		$seen_links << article
 	end
 	$counter += 1
-	puts "Going to " + article + " (counter: " + $counter.to_s + ")"
-	next_link(article)
+	puts "\tGoing to #{article} (counter: #{$counter})"
+	find_philosophy(article)
 end
 
 start = ARGV[0]
-puts "START: " + $wikiURL + start
-
-response = Net::HTTP.get_response(URI.parse($wikiURL + start))
-if (response.code == 404)
-	abort("no wikipedia page for this word!")
-end
-
-next_link(start)
+find_philosophy(start)

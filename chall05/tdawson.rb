@@ -11,7 +11,7 @@ $seen_pages = Set.new
 def get_page_links(page)
 	file = open($WIKI_URL + page) rescue abort("no wikipedia page for this word!")
 	links = Nokogiri::HTML.parse(file)
-		.css('div.mw-content-ltr p a[href]', 'div.mw-content-ltr li a[href]')
+		.css('div#mw-content-text p a[href]', 'div#mw-content-text li a[href]')
 		.map { |elem| elem['href'] }
 end
 
@@ -26,15 +26,15 @@ def next_wiki_page(links)
 	abort("No valid wikipedia page link found!")
 end
 
-def find_philosophy(page, counter)
+def find_philosophy(page, counter = 1)
 	links = get_page_links(page)
-	page = next_wiki_page(links)
-	(puts "!!! Reach Philosophy !!!"; exit) if page.eql?("Philosophy")
-	$seen_pages << page;
-	puts "\tGoing to #{page} (counter: #{counter})"
-	find_philosophy(page, counter += 1)
+	next_page = next_wiki_page(links)
+	(puts "!!! Reach Philosophy !!!"; exit) if next_page.eql?("Philosophy")
+	$seen_pages << next_page;
+	puts "\tGoing to #{next_page} (counter: #{counter})"
+	find_philosophy(next_page, counter += 1)
 end
 
-if ARGV.empty? then start = "" else start = ARGV[0] end #start from main page if no arg given :D
-(puts "!!! Reach Philosophy !!!"; exit) if ARGV[0].eql?("Philosophy")
-find_philosophy(start, 1)
+if ARGV.empty? then start_page = "" else start_page = ARGV[0] end #start from main page if no arg given :D
+(puts "!!! Reach Philosophy !!!"; exit) if start_page.eql?("Philosophy")
+find_philosophy(start_page)

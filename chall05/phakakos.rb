@@ -63,7 +63,9 @@ class MainLoop
 			pname = url.split("/wiki/")
 		end
 		if ($history.index(url) != nil)
-			puts "Skip #{pname[-1]}, already seen this one"
+			if ($step > 0)
+				puts "Skip #{pname[-1]}, already seen this one"
+			end
 			$dup = 1
 			return()
 		else

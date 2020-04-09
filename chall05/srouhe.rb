@@ -54,36 +54,14 @@ def make_request(page)
 end
 
 
-def get_category(page)
-	base = 'https://en.wikipedia.org/w/api.php?action=query&prop=categories&titles='
-	url = '%s%s%s' % [base, page, '&format=json']
-	uri = URI(url)
-	return Net::HTTP.get_response(uri)
-end
-
-
-def check_category(page)
-	begin
-		res = get_category(page)
-		key, value = JSON.parse(res.body)['query']['pages'].first
-		categories = value['categories']
-		categories.each { |category|
-			if category['title'].downcase.include? "philosophy"
-				puts "!!! Reach Philosophy !!!"
-				exit
-			end
-		}
-	rescue
-		return
-	end
-end
-
-
 def aristotle(arg, counter)
-	check_category(arg)
 	res = make_request(arg)
 	VISITED << arg
 	link = get_first_link(res)
+	if link == "Philosophy"
+		puts "!!! Reach Philosophy !!!"
+		exit
+	end
 	counter += 1
 	puts "Going to %s (counter: %d)" % [link, counter]
 	aristotle(link, counter)
@@ -91,6 +69,10 @@ end
 
 
 def main()
+	if ARG.downcase == "philosophy"
+		puts "You're already there"
+		exit
+	end
 	if ARG
 		puts "Road to Philosophy... CTRL+C to exit"
 		aristotle(ARG.capitalize(), 0)

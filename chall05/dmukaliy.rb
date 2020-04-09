@@ -3,12 +3,21 @@
 
 require 'open-uri'
 
-def go_to(url, visited, counter, seen)
-    start_url = "https://en.wikipedia.org/wiki/"
-    if url == "Philosophy"
-        puts "!!! Reach Philosophy !!!"
-        exit
+def get_path(content, skip)
+    content = content.slice(content.index('<p>')..-1)
+    link = content.slice(content.index('<a href="/wiki')..-1)
+    while skip != 0
+        link = link.slice(10..-1)
+        link = link.slice(link.index('<a href="/wiki')..-1)
+        skip -= 1
     end
+    path = link.slice(link.index('"/wiki/')..link.index('" '))
+    our_path = path.slice(7..-2)
+    return our_path
+end
+
+def go_to(url, visited, counter, skip)
+    start_url = "https://en.wikipedia.org/wiki/"
     begin
         file = open(start_url.concat(url))
     rescue
@@ -16,23 +25,23 @@ def go_to(url, visited, counter, seen)
         exit
     end
     content = file.read()
-    content = content.slice(content.index('<p>')..-1)
-    link = content.slice(content.index('<a href="/wiki')..-1)
-    while seen != 0
-        link = link.slice(10..-1)
-        link = link.slice(link.index('<a href="/wiki')..-1)
-        seen -= 1
+    our_path = get_path(content, skip)
+    if our_path == "Philosophy"
+        puts "!!! Reach Philosophy !!!"
+        exit
     end
-    path = link.slice(link.index('"/wiki/')..link.index('" '))
-    our_path = path.slice(7..-2)
+    if our_path.include? "Help:IPA/"
+        go_to(url, visited, counter, skip + 1)
+    end
     if !visited.include? our_path
         counter += 1
+        skip = 0
         puts "\tGoing to " + our_path  + " (counter: " + counter.to_s + ")"
         visited.push(our_path)
-        go_to(our_path, visited, counter, seen)
+        go_to(our_path, visited, counter, skip)
     else
         puts "Skip " + our_path  + ", already seen this one"
-        go_to(url, visited, counter, seen + 1)
+        go_to(url, visited, counter, skip + 1)
     end
 end
 

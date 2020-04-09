@@ -54,7 +54,11 @@ class MainLoop
 	def initialize(url)
 		if (url == $goal)
 			puts "!!! Reach Philosophy !!!"
-			exit()
+			if ($step > 0)
+				exit()
+			else
+				puts "But lets go for a complete round"
+			end
 		end
 		if (url.match('#'))
 			url = url.split("#")[0]

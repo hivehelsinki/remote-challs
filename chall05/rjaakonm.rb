@@ -6,6 +6,16 @@ require 'open-uri'
 $array = Array.new
 $counter = 0
 
+def getArticleSource(string)
+	url = 'https://en.wikipedia.org/wiki/'
+	source = open(url + string).read
+    rescue
+		puts 'no wikipedia page for this word!'
+        exit
+    else
+    	GetFirstLink(source)
+end
+
 def GetFirstLink(source)
 	# Get content part of article
 	pattern = /<p>[\s\S]+?<\/p>/
@@ -17,14 +27,16 @@ def GetFirstLink(source)
 
     # Get wikipedia links from content and loop to find first link
 	pattern = /a href="\/wiki\/([\s\S]*?)["]/
-	paragraphs.each{ |paragraph|
+    paragraphs.each{ |paragraph|
 		links = paragraph.scan(pattern)
-		links.each{ |link|
+        links.each{ |link|
 			if (link[0] == 'Philosophy')
 				puts '!!! Reach Philosophy !!!'
 				exit
 			elsif ($array[0] and $array.include? link[0])
-				puts "Skip " + link[0] + ", already seen this one"
+                puts "Skip " + link[0] + ", already seen this one"
+            elsif
+                link[0].match(":")
 			else
 				$array << link[0]
 				$counter += 1
@@ -37,17 +49,6 @@ def GetFirstLink(source)
 	exit
 end
 
-def getArticleSource(string)
-	url = 'https://en.wikipedia.org/wiki/'
-	source = open(url + string).read
-    rescue OpenURI::HTTPError
-		puts 'no wikipedia page for this word!'
-		exit
-	else
-		GetFirstLink(source)
-	return
-end
-
-begin
-	getArticleSource(ARGV[0])
+if ARGV[0]
+    getArticleSource(ARGV[0])
 end

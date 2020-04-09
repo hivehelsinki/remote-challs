@@ -9,7 +9,7 @@ end
 
 cmd_argv = ARGV
 
-if (ARGV.length == 1)
+if (ARGV.length == 2)
 	exit()
 end
 start = "/wiki/" + ARGV[0].capitalize()

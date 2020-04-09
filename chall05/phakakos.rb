@@ -56,7 +56,12 @@ class MainLoop
 			puts "!!! Reach Philosophy !!!"
 			exit()
 		end
-		pname = url.split("/wiki/")
+		if (url.match('#'))
+			url = url.split("#")[0]
+			pname = url.split("/wiki/")
+		else
+			pname = url.split("/wiki/")
+		end
 		if ($history.index(url) != nil)
 			puts "Skip #{pname[-1]}, already seen this one"
 			$dup = 1

@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-# ruby version 2.6.6
+# ruby version 2.6.6p146
+$VERBOSE = nil
 
 require 'HTTParty'
 require 'Nokogiri'
@@ -54,13 +55,15 @@ class MainLoop
 		if (url == $goal)
 			puts "!!! Reach Philosophy !!!"
 			exit()
-		elsif ($history.index(url) != nil)
-			puts "Visited, skipping"
+		end
+		pname = url.split("/wiki/")
+		if ($history.index(url) != nil)
+			puts "Skip #{pname[-1]}, already seen this one"
 			$dup = 1
 			return()
 		else
 			if ($step > 0)
-				puts "\tAt #{url}, step #{$step}, page #{$loops}"
+				puts "\tGoing to #{pname[-1]} (counter: #{$step})"
 			end
 			$history.push(url)
 			$step += 1

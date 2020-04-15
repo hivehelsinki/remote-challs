@@ -1,1 +1,1 @@
-DIFF: KO - ./ptuukkan.rb:10:in 'get_wiki': undefined method 'match?' for '200':String (NoMethodError)
+DIFF: OK 

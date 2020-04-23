@@ -14,17 +14,14 @@ def solve(lines):
 	shelf_amount = len(widths)
 	if shelf_amount < 1: 
 		sys.exit(sys.argv[0] + ": Can't read file")
-
 	iterlines = iter(lines)
 	next(iterlines)
-
 	total_width = 0
 	for line in iterlines:
 		book_width = line.split(' ')
 		if len(book_width) < 2 or book_width[0].isdigit() == 0: 
 			sys.exit(sys.argv[0] + ": Can't read file")
 		total_width += int(book_width[0])
-					
 	needed = 0
 	shelf_width = 0
 	while total_width > shelf_width and needed < shelf_amount:

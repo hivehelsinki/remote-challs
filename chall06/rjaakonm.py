@@ -3,7 +3,7 @@
 import sys
 import fileinput
 
-def solve(lines):
+def solve(lines, name):
 	if len(lines) < 1: 
 		sys.exit(sys.argv[0] + ": Can't read file")
 	try:
@@ -28,23 +28,16 @@ def solve(lines):
 		shelf_width += widths[needed]
 		needed += 1
 	if total_width > shelf_width:
-		print(sys.argv[0] + ": too_large_collection.txt: Not enough space in the given shelves")
+		print(sys.argv[0], ': ', name, ': Not enough space in the given shelves', sep = '')
 	else:
 		print (needed)
 
 def main():	
 	lines = []
 	if len(sys.argv) == 1:
-		try:
-			for line in fileinput.input():
-				lines.append(line)
-		except FileNotFoundError:
-			sys.exit(sys.argv[0] + ": not_existing_file: Can't read file")
-		except PermissionError:
-			sys.exit(sys.argv[0] + ": permission_denied_file: Can't read file")
-		except:
-			sys.exit(sys.argv[0] + ": Can't read file")
-		solve(lines)
+		for line in fileinput.input():
+			lines.append(line)
+		solve(lines, 'stdin')
 	else:
 		iterargs = iter(sys.argv)
 		next(iterargs)
@@ -53,14 +46,10 @@ def main():
 			try:
 				for line in fileinput.input(arg):
 					lines.append(line)
-			except FileNotFoundError:
-				print(sys.argv[0] + ": not_existing_file: Can't read file")
-			except PermissionError:
-				print(sys.argv[0] + ": permission_denied_file: Can't read file")
 			except:
-				print(sys.argv[0] + ": Can't read file")
+				print(sys.argv[0], ": ", arg, ": Can't read file")
 			else:
-				solve(lines)
+				solve(lines, arg)
 	
 
 if __name__ == "__main__":

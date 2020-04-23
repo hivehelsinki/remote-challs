@@ -14,6 +14,9 @@ def get_biggest(shelfs):
 if len(sys.argv) < 2:
 	lines = []
 	shelfs = input().split()
+	for n in shelfs:
+		if not n.isdigit():
+			sys.exit(sys.argv[0] + ": " + "stdin:" + " Can't read file")
 	while True:
 		try:
 			line = input()
@@ -40,6 +43,7 @@ else:
 	args = sys.argv[1:]
 	for arg in args:
 		lines = []
+		fail = 0
 		if len(args) > 1:
 			print(arg + ":")
 		try:
@@ -48,11 +52,17 @@ else:
 			print(sys.argv[0] + ": " + arg + ": Can't read file")
 			continue
 		shelfs = file.readline().split()
+		for n in shelfs:
+			if not n.isdigit():
+				print(sys.argv[0] + ": " + arg + ": Can't read file")
+				fail = 1
+				break
+		if fail:
+			continue
 		for line in file:
 			lines.append(line)
 		files = []
 		books = 0
-		fail = 0
 		for line in lines:
 			try:
 				books += int((re.search(r"^\d+", line).group()))

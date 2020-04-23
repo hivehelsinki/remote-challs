@@ -6,11 +6,10 @@ import fileinput
 def errnoHandle(code, source):
         #replace with (sys.argv[0] + " ") for flexible use. My enviroment does not match the tests, which gives a different out put, so I'm just gonna hardcode it :^)
         beginning = "./phakakos.py "
-        if code == 1:
+        if code == -1:
                 print(beginning + source + ": Can't read file")
-        elif code == 2:
+        elif code == -2:
                 print(beginning + source + ": Not enough space in the given shelve")
-        return (code)
 
 def readLoop(lines, name):
         totalW = 0
@@ -23,22 +22,26 @@ def readLoop(lines, name):
                         i = 0
                         for var in shelfs:
                                         try:
-                                                shelfs[i] = int(shelfs[i])
+                                                shelfs[i] = int(var)
+                                                if shelfs[i] < 0:
+                                                        return(-1)
                                         except:
-                                                return(errnoHandle(1, name))
+                                                return(-1)
                                         i += 1
                         if len(shelfs) == 0:
-                                return(errnoHandle(1, name))
+                                return(-1)
                         continue
                 line = line.split()
                 try:
                         addBooks = int(line[0])
+                        if addBooks < 0:
+                                return (-1)
                 except:
-                        return(errnoHandle(1, name))
+                        return(-1)
                 totalW += addBooks
         while(totalW > totalU):
                 if len(shelfs) == 0:
-                        return(errnoHandle(2, name))
+                        return(-2)
                 largest = shelfs[0]
                 topi = 0
                 i = 0
@@ -51,6 +54,7 @@ def readLoop(lines, name):
                 bought += 1
                 totalU += largest
         print(bought)
+        return(bought)
                         
         
         
@@ -61,7 +65,9 @@ def mainLoop():
                 for line in fileinput.input():
                         lines.append(line.replace('\n',''))
                 print(lines)
-                readLoop(lines, "stdin")
+                ret = readLoop(lines)
+                if ret < 0:
+                        errnoHandle(ret, "stdin")
         else:
                 skip = 0
                 for arg in sys.argv:
@@ -77,10 +83,12 @@ def mainLoop():
                                 file = open(arg, "r")
                                 lines = file.read()
                                 lines = lines.split('\n')
-                                readLoop(lines, arg)
+                                ret = readLoop(lines, arg)
+                                if ret < 0:
+                                        errnoHandle(ret, arg)
                                 file.close()
                         except:
-                                errnoHandle(1, arg)
+                                errnoHandle(-1, arg)
 
 if __name__ == '__main__':
 	mainLoop()

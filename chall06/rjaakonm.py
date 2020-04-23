@@ -3,22 +3,13 @@
 import sys
 import fileinput
 
-def main():	
-	lines = []
-	try:
-		for line in fileinput.input():
-			lines.append(line)
-	except FileNotFoundError:
-		sys.exit(sys.argv[0] + ": not_existing_file: Can't read file")
-	except PermissionError:
-		sys.exit(sys.argv[0] + ": permission_denied_file: Can't read file")
-	except:
-		sys.exit(sys.argv[0] + ": Can't read file")
-
+def solve(lines):
 	if len(lines) < 1: 
 		sys.exit(sys.argv[0] + ": Can't read file")
-
-	widths = [int(i) for i in lines[0].split() if i.isdigit()]
+	try:
+		widths = [int(i) for i in lines[0].split()]
+	except:
+		sys.exit(sys.argv[0] + ": Can't read file")
 	widths.sort(reverse=True)
 	shelf_amount = len(widths)
 	if shelf_amount < 1: 
@@ -29,11 +20,10 @@ def main():
 
 	total_width = 0
 	for line in iterlines:
-		book_width = [int(i) for i in line.split(' ') if i.isdigit()]
-		if len(book_width) < 1: 
+		book_width = line.split(' ')
+		if len(book_width) < 2 or book_width[0].isdigit() == 0: 
 			sys.exit(sys.argv[0] + ": Can't read file")
-		if book_width and isinstance(book_width[0], int):
-			total_width += book_width[0]
+		total_width += int(book_width[0])
 					
 	needed = 0
 	shelf_width = 0
@@ -45,5 +35,36 @@ def main():
 	else:
 		print (needed)
 
+def main():	
+	lines = []
+	if len(sys.argv) == 1:
+		try:
+			for line in fileinput.input():
+				lines.append(line)
+		except FileNotFoundError:
+			sys.exit(sys.argv[0] + ": not_existing_file: Can't read file")
+		except PermissionError:
+			sys.exit(sys.argv[0] + ": permission_denied_file: Can't read file")
+		except:
+			sys.exit(sys.argv[0] + ": Can't read file")
+		solve(lines)
+	else:
+		iterargs = iter(sys.argv)
+		next(iterargs)
+		for arg in iterargs:
+			lines = []
+			try:
+				for line in fileinput.input(arg):
+					lines.append(line)
+			except FileNotFoundError:
+				print(sys.argv[0] + ": not_existing_file: Can't read file")
+			except PermissionError:
+				print(sys.argv[0] + ": permission_denied_file: Can't read file")
+			except:
+				print(sys.argv[0] + ": Can't read file")
+			else:
+				solve(lines)
+	
+
 if __name__ == "__main__":
-    main()
+	main()

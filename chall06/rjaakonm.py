@@ -47,7 +47,7 @@ def main():
 				for line in fileinput.input(arg):
 					lines.append(line)
 			except:
-				print(sys.argv[0], ": ", arg, ": Can't read file")
+				print(sys.argv[0], ": ", arg, ": Can't read file", sep = "")
 			else:
 				solve(lines, arg)
 	

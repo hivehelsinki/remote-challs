@@ -45,7 +45,7 @@ def shelves(arg):
         print(sys.argv[0] + ": " + arg + ": Can't read file")
         return
     
-    shelves.sort(reverse=True)
+    shelves.sort(key=int, reverse=True)
     shelves_total = 0
     for i in range(len(shelves) - 1):
         if (shelves[i].isdigit()):

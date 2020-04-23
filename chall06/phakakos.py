@@ -9,13 +9,15 @@ def errnoHandle(code, source):
         if code == -1:
                 print(beginning + source + ": Can't read file")
         elif code == -2:
-                print(beginning + source + ": Not enough space in the given shelve")
+                print(beginning + source + ": Not enough space in the given shelves")
 
 def readLoop(lines, name):
         totalW = 0
-        totalU = 0
+        totalB = 0
+        maxW = 0
         shelfs = []
-        bought = 0
+        books = []
+        used = []
         for line in lines:
                 if len(shelfs) == 0:
                         shelfs = line.split()
@@ -25,36 +27,53 @@ def readLoop(lines, name):
                                                 shelfs[i] = int(var)
                                                 if shelfs[i] < 0:
                                                         return(-1)
+                                                if shelfs[i] > maxW:
+                                                        maxW = shelfs[i]
+                                                totalW += shelfs[i]
                                         except:
                                                 return(-1)
                                         i += 1
                         if len(shelfs) == 0:
                                 return(-1)
+                        shelfs.sort(reverse = True)
                         continue
                 line = line.split()
                 try:
-                        addBooks = int(line[0])
-                        if addBooks < 0:
-                                return (-1)
+                        addBook = int(line[0])
                 except:
                         return(-1)
-                totalW += addBooks
-        while(totalW > totalU):
-                if len(shelfs) == 0:
-                        return(-2)
-                largest = shelfs[0]
-                topi = 0
+                if addBook == 0:
+                        continue
+                elif addBook < 0:
+                        return (-1)
+                elif addBook > maxW:
+                        return (-2)
+                totalB += addBook
+                books.append(addBook)
+                if totalB > totalW:
+                       return (-2)
+        books.sort(reverse = True)
+        y = 0
+        for book in books:
+                i = 0
+                for shelf in used:
+                        if book <= shelf:
+                                used[i] = shelf - book
+                                book = 0
+                                break
+                        i += 1
+                if book == 0:
+                        continue
                 i = 0
                 for shelf in shelfs:
-                        if shelf > largest:
-                                largest = shelf
-                                topi = i
+                        if book <= shelf:
+                                used.append(shelf - book)
+                                shelfs.pop(i)
+                                break
                         i += 1
-                shelfs.pop(topi)
-                bought += 1
-                totalU += largest
-        print(bought)
-        return(bought)
+                y += 1
+        print(len(used))
+        return(len(used))
                         
         
         
@@ -81,14 +100,15 @@ def mainLoop():
                                 skip = 2
                         try:
                                 file = open(arg, "r")
-                                lines = file.read()
-                                lines = lines.split('\n')
-                                ret = readLoop(lines, arg)
-                                if ret < 0:
-                                        errnoHandle(ret, arg)
-                                file.close()
                         except:
                                 errnoHandle(-1, arg)
+                                continue
+                        lines = file.read()
+                        lines = lines.split('\n')
+                        ret = readLoop(lines, arg)
+                        if ret < 0:
+                                errnoHandle(ret, arg)
+                        file.close()
 
 if __name__ == '__main__':
 	mainLoop()

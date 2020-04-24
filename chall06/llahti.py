@@ -24,7 +24,10 @@ def fill(shelves, collection):
     while i < len(shelves):
         if collection[0] < shelves[i]:
             shelves[i] -= collection[0]
-            return fill(shelves, collection[1:])
+            if fill(shelves, collection[1:]):
+                return True
+            else:
+                shelves[i] += collection[0]
         i += 1
     return False
 

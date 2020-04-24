@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 import sys
 
-def shelves_count_try(books, shelves, shelf_index):
-	count = 0
-	tmp = shelves[shelf_index]
-	for i in range(len(books)):
-		if tmp >= books[i]:
-			tmp = tmp - books[i]
+def shelves_count_try(books, shelves, shelf_index, book_index):
+	count = 1
+	curr_shelf = shelves[shelf_index]
+	books_len = len(books)
+	for _ in range(books_len):
+		if curr_shelf >= books[book_index]:
+			curr_shelf = curr_shelf - books[book_index]
+			book_index += 1
+			if book_index >= books_len:
+				book_index = 0
 		else:
 			count += 1
 			if count >= len(shelves):
@@ -15,15 +19,16 @@ def shelves_count_try(books, shelves, shelf_index):
 			shelf_index += 1
 			if shelf_index >= len(shelves):
 				shelf_index = 0
-			tmp = shelves[shelf_index] - books[i]
+			curr_shelf = shelves[shelf_index]
 	return count
 
 def variable_bin_pack(books, shelves):
-	result = sys.maxint
-	for i in range(shelves):
-		try_count = shelves_count_try(books, shelves, i)
-		if try_count < result:
-			result = try_count
+	result = 999999999
+	for j in range(len(books)):
+		for i in range(len(shelves)):
+			try_count = shelves_count_try(books, shelves, i, j)
+			if try_count < result:
+				result = try_count
 	return result
 
 if __name__ == "__main__":
@@ -43,5 +48,4 @@ if __name__ == "__main__":
 	except:
 		print("Wrong books given")
 		exit()
-	print(books)
 	print(variable_bin_pack(books, shelves))

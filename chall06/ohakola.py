@@ -40,9 +40,9 @@ def variable_shelf_pack(books, shelves, program, source):
 	shelves.sort(key=int, reverse=True)
 	for j in range(len(books)):
 		for i in range(len(shelves)):
-				try_count = shelves_needed(books, shelves, i, j)
-				if try_count != -1 and try_count < result:
-					result = try_count
+			try_count = shelves_needed(books, shelves, i, j)
+			if try_count != -1 and try_count < result:
+				result = try_count
 	if result == MAX_INT:
 		print(f"{program}: {source}: Not enough space in the given shelves")
 		exit()

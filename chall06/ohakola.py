@@ -1,33 +1,34 @@
 #!/usr/bin/python3
 import sys
 
-# Loops through one round of books and tries to fit them to shelves
+# Loops through books and tries to fit them to shelves
 # If count goes too high, return -1
 def shelves_needed(books, shelves, shelf_index, book_index):
 	count = 1
 	curr_shelf = shelves[shelf_index]
 	books_len = len(books)
 	shelves_len = len(shelves)
-	i = book_index
-	j = shelf_index
-	for k in range(books_len):
-		if curr_shelf >= books[i]:
-			curr_shelf = curr_shelf - books[i]
-			i += 1
-			if i >= books_len:
-				i = 0
+	books_placed = 0
+	while books_placed < books_len:
+		if curr_shelf >= books[book_index]:
+			curr_shelf = curr_shelf - books[book_index]
+			book_index += 1
+			if book_index >= books_len:
+				book_index = 0
+			books_placed += 1
 		else:
 			count += 1
 			if count > shelves_len:
 				return -1
-			j += 1
-			if j >= shelves_len:
-				j = 0
-			curr_shelf = shelves[j]
+			shelf_index += 1
+			if shelf_index >= shelves_len:
+				shelf_index = 0
+			curr_shelf = shelves[shelf_index]
 	return count
 
 # Sorts shelves from largest to smalles after which attempt shelves_needed
-# function. For each book index and for each shelf index try to find solution
+# function for each book index and for each shelf index
+# returns best solution
 def variable_shelf_pack(books, shelves, program, source):
 	MAX_INT = 999999999
 	result = MAX_INT

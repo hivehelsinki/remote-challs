@@ -8,6 +8,8 @@ def usage():
 
 def input_test():
         height = len(sys.argv) - 1
+        if height > 20:
+                usage()
         for arg in sys.argv[1:]:
                 # is good length
                 if len(arg) != height:

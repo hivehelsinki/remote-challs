@@ -29,11 +29,6 @@ def PrintAndDelete(array, new_array):
 	if rows > 1:
 		del(array[rows - 1])
 	del(array[0])
-	
-	
-	if rows > 2 and columns > 2:
-		return 1
-	return 0
 
 def main():
 	if len(sys.argv) > 1:

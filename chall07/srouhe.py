@@ -43,7 +43,7 @@ def snail(rows: list):
     start_x = 0
     end_y = len(rows) - 1
     end_x = len(rows[0]) - 1
-    while 1:
+    while slots:
         i = start_x
         while i <= end_x:
             result.append(rows[start_y][i])
@@ -71,9 +71,6 @@ def snail(rows: list):
             i -= 1
             slots -= 1
         start_x += 1
-
-        if slots <= 0:
-            break
 
     return result
 

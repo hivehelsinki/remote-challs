@@ -7,9 +7,8 @@ size = len(rows)
 p = re.compile('[1-9]+$')
 comma = ", "
 
-def usage(code):
-	print(f'usage: {sys.argv[0]} <1-9 squared_rows...>')
-	exit(code)
+def usage():
+	exit(f'usage: {sys.argv[0]} <1-9 squared_rows...>')
 
 def top():
 	res = ""
@@ -18,11 +17,12 @@ def top():
 	del rows[0]
 	return res
 
-def right(size):
+def right():
 	res = ""
+	width = len(rows[0]) - 1
 	for y, row in enumerate(rows):
-		res += row[size - 1] + comma
-		rows[y] = row[:size-1]
+		res += row[width] + comma
+		rows[y] = row[:width]
 	return res
 
 def bottom():
@@ -47,27 +47,16 @@ def check_quit(output):
 		print(output[:-2])
 		exit(0)
 
-def worm(size, output):
-	output += top()
-	check_quit(output)
-
-	output += right(size)
-	check_quit(output)
-
-	output += bottom()
-	check_quit(output)
-
-	output += left()
-	check_quit(output)
-	worm(len(rows), output)
-
-def main():
-	if size == 0 or size > 20:
-		usage(0)
-	for row in rows:
-		if not p.match(row) or size != len(row):
-			usage(1)
-	worm(size, "")
+def cut(funcs, output):
+	for func in funcs:
+		output += func()
+		check_quit(output)
+	cut(funcs, output)
 
 if __name__ == "__main__":
-	main()
+	if size == 0 or size > 20:
+		usage()
+	for row in rows:
+		if not p.match(row) or size != len(row):
+			usage()
+	cut([top, right, bottom, left], "")

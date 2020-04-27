@@ -12,8 +12,7 @@ array = np.array([list(row) for row in sys.argv[1:]])
 
 path = []
 for _ in range(rows):
-    path.extend(list(n for n in array[0]))
-    path.extend(list(n for n in array[1:, -1]))
-    array = np.rot90(array[1:, :-1], 2)
+    path.extend(list(array[0]) + list(array[1:, -1]))
+    array = np.flip(array[1:, :-1])
 
 print(", ".join(path))

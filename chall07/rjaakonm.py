@@ -12,7 +12,6 @@ def PrintAndDelete(array, new_array):
 	first = array[0]
 	if rows > 1:
 		last = Reverse(array[rows - 1])
-
 	for x in first:
 		new_array.append(x)
 	if rows > 2:

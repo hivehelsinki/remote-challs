@@ -4,10 +4,8 @@ import sys
 
 if __name__ == "__main__":
 	size2 = len(sys.argv) - 1
-	if size2 < 1 or size2 > 20:
-		exit(f"{sys.argv[0]}: <1-9 squared_rows...>")
-	for x in range(1, size2 + 1):
-		if len(sys.argv[x]) is not size2 or not sys.argv[x].isdigit():
+	if size2 < 1 or size2 > 20 or not all(len(sys.argv[x]) is size2 
+		and sys.argv[x].isdigit() for x in range(1, size2 + 1)):
 			exit(f"{sys.argv[0]}: <1-9 squared_rows...>")
 	del(sys.argv[0])
 	array = []

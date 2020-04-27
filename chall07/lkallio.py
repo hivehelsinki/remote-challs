@@ -14,8 +14,7 @@ def make_snail(array, start, end):
 
 for row in sys.argv[1::]:
 	if len(sys.argv[1::]) != len(row) or not row.isnumeric():
-		print ('usage: ./lkallio.py <1-9 squared_rows...>')
-		exit(0)
+		sys.exit(f'usage: {sys.argv[0]} <1-9 squared_rows...>')
 
 snail = []
 make_snail(sys.argv[1::], 0, len(sys.argv[1::]) - 1)

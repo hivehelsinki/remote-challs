@@ -3,19 +3,23 @@ import sys
 
 def main():
 	nums = sys.argv
+	name = sys.argv[0]
 	length = len(nums) - 1
 	dist_edge = 1
 	x = 0
 	y = 0
 
 	del(nums[0])
+	if length == 0:
+		print("usage: " + name + " <1-9 squared_rows...>")
+		return
 	for arg in nums:
 		for char in arg:
 			if (char < '0' or char > '9'):
-				print("usage: " + sys.argv[0] + " <1-9 squared_rows...>")
+				print("usage: " + name + " <1-9 squared_rows...>")
 				return
 		if (len(arg) != length):
-			print("usage: " + sys.argv[0] + " <1-9 squared_rows...>")
+			print("usage: " + name + " <1-9 squared_rows...>")
 			return
 	while (dist_edge <= length / 2 + 1):
 		y = dist_edge - 1

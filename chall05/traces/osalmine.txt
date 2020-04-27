@@ -1,0 +1,1 @@
+DIFF: KO - you can see for example with ancient, your code try to access the same page because it fetches the source of the same page (html ancer)

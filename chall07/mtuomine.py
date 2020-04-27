@@ -27,19 +27,20 @@ def right(size):
 
 def bottom():
 	res = ""
-	x = len(rows)-1
+	last = len(rows)-1
+	x = last
 	while x >= 0:
-		res += rows[len(rows)-1][x] + comma
+		res += rows[last][x] + comma
 		x-=1
-	del rows[len(rows)-1]
+	del rows[last]
 	return res
 
 def left():
 	res = ""
 	for y, row in enumerate(rows):
-		res += row[0] + comma
+		res += " ," + row[0]
 		rows[y] = row[1:]
-	return res
+	return res[::-1]
 
 def check_quit(output):
 	if len(rows) == 0:
@@ -61,7 +62,7 @@ def worm(size, output):
 	worm(len(rows), output)
 
 def main():
-	if size == 0:
+	if size == 0 or size > 20:
 		usage(0)
 	for row in rows:
 		if not p.match(row) or size != len(row):

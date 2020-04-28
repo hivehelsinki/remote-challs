@@ -49,4 +49,3 @@ for i in arr:
 		exit(f"usage: {sys.argv[0]} <1-9 squared_rows...>")
 
 spiralPrint(arr_len, arr_len, arr)
-

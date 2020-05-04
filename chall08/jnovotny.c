@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 18:14:56 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/05/04 18:50:49 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/05/04 18:59:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int ft_ie_except_after_c(char *str)
 {
 	int i;
-	
-	if (strlen(str) >= 2 && str[0] == 'e' && str[1] == 'i')
+
+	if (!str)
+		return 1;
+	else if (strlen(str) >= 2 && str[0] == 'e' && str[1] == 'i')
 		return 0;
 	else if (strlen(str) < 3 || (!strstr(str, "ei") && !strstr(str, "ie")))
 		return 1;

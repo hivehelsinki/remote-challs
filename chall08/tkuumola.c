@@ -14,7 +14,7 @@ int match(char *str, char *needle)
 
 int ft_ie_except_after_c(char *str)
 {    
-    if (str == NULL || strlen(str) == 0)
+    if (str == NULL)
         return(0);
     
     if (match(str, "ei") == 0 && match(str, "ie") == 0)
@@ -27,7 +27,7 @@ int ft_ie_except_after_c(char *str)
 
     if (cei_word == 1 && cie_word == 0) 
         return (1);
-    if (ie_word == 1 && cie_word == 0 && ei_word == 0 && strlen(str) > 2)
+    if (ie_word == 1 && cie_word == 0 && ei_word == 0)
         return (1);
     return (0);
 }

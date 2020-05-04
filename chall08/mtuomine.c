@@ -10,8 +10,6 @@ int ft_ie_except_after_c(char *str) {
 	char *ei_found = strcasestr(str, "ei");
 	char *ie_found = strcasestr(str, "ie");
 
-	if (ei_found == 0 && ie_found == 0)
-		return (1);
 	if ((ei_found && !c_found(ei_found)) || (ie_found && c_found(ie_found)))
 		return (0);
 	if ((ei_found && c_found(ei_found)) || (ie_found && !c_found(ie_found)))

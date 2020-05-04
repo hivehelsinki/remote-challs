@@ -1,7 +1,6 @@
 int ft_ie_except_after_c(char *str)
 {
 	int i = 0;
-	int ok = 1;
 
 	while (str[i])
 	{

@@ -13,7 +13,7 @@
 <sub>**Turn-in directory:** `chall08/`</sub><br />
 <sub>**Files to turn in:** `<xlogin>.c`</sub><br />
 <sub>**Language:** `C`</sub><br />
-<sub>**Prototype:** `ft_ie_except_after_c(char* str);`</sub>
+<sub>**Prototype:** `int ft_ie_except_after_c(char *str);`</sub>
 
 <sub>**Deadline:** 5.5.2020 - 5:00pm</sub>
 <br /><br />

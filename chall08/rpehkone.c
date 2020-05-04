@@ -1,15 +1,13 @@
 int	ft_ie_except_after_c(char *str)
 {
-	for (int i = 0; str[i]; i++)
+	if (*str == 'e' && *(str + 1) == 'i')
+		return (0);
+	while (*(str++))
 	{
-		if (str[i] == 'e' && str[i + 1] == 'i')
-		{
-			if (!i || str[i - 1] != 'c')
-				return (0);
-		}
-		else if (str[i] == 'i' && str[i + 1] == 'e')
-			if (i && str[i - 1] == 'c')
-				return (0);
+		if (*str == 'e' && *(str + 1) == 'i' && *(str - 1) != 'c')
+			return (0);
+		else if (*str == 'i' && *(str + 1) == 'e' && *(str - 1) == 'c')
+			return (0);
 	}
 	return (1);
 }

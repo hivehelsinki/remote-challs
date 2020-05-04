@@ -1,5 +1,3 @@
-#include <string.h>
-
 int ft_ie_except_after_c(char *str)
 {
 	int i;
@@ -7,7 +5,7 @@ int ft_ie_except_after_c(char *str)
 	i = 0;
 	if (str == NULL)
 		return (-1);
-	if (strlen(str) == 0)
+	if (str[0] == '\0')
 		return (1);
 	if (str[0] == 'e' && str[1] == 'i')
 		return (0);

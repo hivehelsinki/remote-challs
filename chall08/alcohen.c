@@ -7,7 +7,7 @@ static int check_ei(char *str, size_t i)
 {
     if (str[i + 1] && str[i + 1] == 'i')
     {
-        if (str[i - 1] && str[i - 1] == 'c')
+        if (i > 0 && str[i - 1] && str[i - 1] == 'c')
             return (1);
         else
             return (0);
@@ -22,7 +22,7 @@ static int check_ie(char *str, size_t i)
 {
     if (str[i + 1] && str[i + 1] == 'e')
         {
-            if (str[i - 1] && str[i - 1] == 'c')
+            if (i > 0 && str[i - 1] && str[i - 1] == 'c')
                 return (0);
         }
     return (1);

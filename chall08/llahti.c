@@ -1,13 +1,11 @@
-#include <string.h>
-
-int		ft_cie(char *str, size_t i)
+int		ft_cie(char *str, int i)
 {
 	if (i == 0)
 		return 0;
 	return (str[i - 1] == 'c');
 }
 
-int		ft_cei(char *str, size_t i)
+int		ft_cei(char *str, int i)
 {
 	if (i == 0)
 		return 0;
@@ -16,7 +14,7 @@ int		ft_cei(char *str, size_t i)
 
 int		ft_ie_except_after_c(char *str)
 {
-	size_t i = 0;
+	int i = 0;
 
 	while (str[i] != '\0' && str[i + 1] != '\0')
 	{

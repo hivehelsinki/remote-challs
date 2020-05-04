@@ -18,19 +18,20 @@ int		following(char *str, char c)
 int		ft_ie_except_after_c(char *str)
 {
 	int		rtn;
-	long	len;
 	long	i;
 	
-	i = 0;
-	len = ft_strlen(str) - 1;
+	i = ft_strlen(str) - 1;
 	rtn = 1;
-	while (i < len && rtn == 1)
+	while (rtn == 1 && --i >= 0)
 	{
-		if (str[i] == 'e' && i > 0)
+		if (str[i] == 'e')
+		{
+			if (i == 0 && str[i + 1] == 'i')
+				return (0);
 			rtn = following(&str[i - 1], 'i');
+		}
 		else if (str[i] == 'i' && i > 0)
-			rtn = !following(&str[i - 1], 'e')
-		i++;
+			rtn = !(following(&str[i - 1], 'e'));
 	}
 	return (rtn)
 }

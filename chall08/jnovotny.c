@@ -6,12 +6,11 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 18:14:56 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/05/04 18:46:14 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/05/04 18:50:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <stdio.h>
 
 int ft_ie_except_after_c(char *str)
 {
@@ -32,15 +31,4 @@ int ft_ie_except_after_c(char *str)
 			i++;
 	}
 	return 1;
-}
-
-int main(int ac, char **av)
-{
-	int i;
-	i = 1;
-	while (i < ac)
-	{
-		printf("%s: %d\n", av[i], ft_ie_except_after_c(av[i]));
-		i++;
-	}
 }

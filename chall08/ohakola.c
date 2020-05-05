@@ -34,6 +34,6 @@ static int	test_ie(char *str)
 int		ft_ie_except_after_c(char *str)
 {
 	if (!str)
-		return (0);
+		return (true);
 	return (test_ei(str) && test_ie(str));
 }

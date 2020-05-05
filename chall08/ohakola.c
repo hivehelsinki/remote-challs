@@ -35,5 +35,7 @@ int		ft_ie_except_after_c(char *str)
 {
 	if (!str)
 		return (true);
+	if (strcmp("ei", str) == 0)
+		return (false);
 	return (test_ei(str) && test_ie(str));
 }

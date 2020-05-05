@@ -1,10 +1,14 @@
-long	ft_strlen(char *str)
+long	ft_strlen(char **str)
 {
 	long	i;
 	
 	i = 0;
-	while (str[i])
+	while (str[0][i])
+	{
+		if (str[0][i] >= 'A' && str[0][i] <= 'Z')
+			str[0][i] += 32; 
 		i++;
+	}
 	return (i)
 }
 
@@ -19,9 +23,11 @@ int		ft_ie_except_after_c(char *str)
 {
 	int		rtn;
 	long	i;
-	
-	i = ft_strlen(str) - 1;
+
 	rtn = 1;
+	i = 0;
+	if (rtn)
+		i = ft_strlen(&str) - 1;
 	while (rtn == 1 && --i >= 0)
 	{
 		if (str[i] == 'e')

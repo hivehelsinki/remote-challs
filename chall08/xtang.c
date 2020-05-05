@@ -6,7 +6,7 @@
 /*   By: xtang <xtang@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 11:30:48 by xtang             #+#    #+#             */
-/*   Updated: 2020/05/06 02:16:12 by xtang            ###   ########.fr       */
+/*   Updated: 2020/05/06 02:22:04 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	ft_ie_except_after_c(char *str)
 	{
 		if (str[i] == 'e')
 		{
-/* 'e' appears at the first postion */
+/* 'e' appears at the first position */
 			if (i == 0)
 			{
 				if (str[i + 1] != '\0' && str[1] == 'i')
 					return (0);
 			}
-/* 'e' appears at the second postion */
+/* 'e' appears at the second position */
 			else if (i == 1)
 			{
 				if (str[i + 1] != '\0' && str[0] != 'c' && str[2] == 'i')

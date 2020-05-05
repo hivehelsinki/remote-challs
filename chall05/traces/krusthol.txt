@@ -1,0 +1,1 @@
+DIFF: KO - arguments passed ./login.rb "ancient" doesn't work it leads to a typeerror conversion :/

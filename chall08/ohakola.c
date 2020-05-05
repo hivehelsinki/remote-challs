@@ -1,30 +1,16 @@
 #include <string.h>
 #include <stdbool.h>
 
-static int	test_ei(char *str)
+static int	test(char *str, char *test, bool follows_c)
 {
 	char	*strcpy;
 
 	strcpy = str;
-	while ((strcpy = strstr(strcpy, "ei")))
+	while ((strcpy = strstr(strcpy, test)))
 	{
 		if (strcpy - str > 0)
-			if (str[strcpy - str - 1] != 'c')
-				return (false);
-		strcpy++;
-	}
-	return (true);
-}
-
-static int	test_ie(char *str)
-{
-	char	*strcpy;
-
-	strcpy = str;
-	while ((strcpy = strstr(strcpy, "ie")))
-	{
-		if (strcpy - str > 0)
-			if (str[strcpy - str - 1] == 'c')
+			if (follows_c ? str[strcpy - str - 1] == 'c' :
+				str[strcpy - str - 1] != 'c')
 				return (false);
 		strcpy++;
 	}
@@ -37,5 +23,5 @@ int		ft_ie_except_after_c(char *str)
 		return (true);
 	if (strcmp("ei", str) == 0)
 		return (false);
-	return (test_ei(str) && test_ie(str));
+	return (test(str, "ei", false) && test(str, "ie", true));
 }

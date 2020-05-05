@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-static int	test(char *str, char *test, bool follows_c)
+static int	test_case(char *str, char *test, bool follows_c)
 {
 	char	*s = str;
 	while ((s = strstr(s, test)))
@@ -20,5 +20,5 @@ int		ft_ie_except_after_c(char *str)
 		return (true);
 	if (strcmp("ei", str) == 0)
 		return (false);
-	return (test(str, "ei", true) && test(str, "ie", false));
+	return (test_case(str, "ei", true) && test_case(str, "ie", false));
 }

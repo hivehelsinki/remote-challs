@@ -6,11 +6,9 @@
 /*   By: xtang <xtang@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 11:30:48 by xtang             #+#    #+#             */
-/*   Updated: 2020/05/06 02:11:13 by xtang            ###   ########.fr       */
+/*   Updated: 2020/05/06 02:16:12 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	ft_ie_except_after_c(char *str)
 {
@@ -47,16 +45,4 @@ int	ft_ie_except_after_c(char *str)
 		i++;
 	}
 	return (1);
-}
-
-int	main(int argc, char **argv)
-{
-	int res;
-
-	res = ft_ie_except_after_c(argv[1]);
-	if (res == 1)
-		printf("1\n");
-	if (res == 0)
-		printf("0\n");
-	return (0);
 }
